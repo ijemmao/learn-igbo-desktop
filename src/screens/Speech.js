@@ -67,8 +67,10 @@ export default class Speech extends Component {
   }
 
   renderPhrases = () => {
-    if (this.state.finalizedText.length > 0) {
-      return this.state.finalizedText.map((phrase, index) => {
+    // if (this.state.finalizedText.length > 0) {
+    if (true) {
+      // return this.state.finalizedText.map((phrase, index) => {
+      return ['this is something to render'].map((phrase, index) => {
         return <Phrase englishPhrase={phrase} key={`${index}-${phrase}`} />
       })
     } else {
