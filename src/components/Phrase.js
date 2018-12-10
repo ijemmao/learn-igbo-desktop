@@ -7,7 +7,7 @@ export default class Phrase extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      igboWords: [], //['words', 'are', ],
+      igboWords: ['words', 'are', 'last', 'time'],
       igboSentence: '',
       englishWords: this.props.englishPhrase.split(' '),
       englishSentence: this.props.englishSentence,
