@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import Anime from 'react-anime';
 import './../styles/Home.css';
-
 
 export default class Home extends Component {
 
   majorOption = (title, description) => {
     return (
+      <Anime easing="easeOutElastic"
+        duration={2700}
+        delay={(el, index) => index * 240}
+        translateY='-85vh'>
       <a href={`/${title.toLowerCase()}`}>
         <div id={title.toLowerCase()} className="major-option-container">
             <div>
@@ -14,6 +18,7 @@ export default class Home extends Component {
             </div>
         </div>
       </a>
+      </Anime>
     )
   }
 
