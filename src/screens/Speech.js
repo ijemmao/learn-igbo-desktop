@@ -10,7 +10,8 @@ export default class Speech extends Component {
     this.state = {
       interimText: '',
       finalizedText: [],
-      listening: true,
+      listening: false,
+      listeningText: 'Start Listening',
     }
   }
 
@@ -41,18 +42,41 @@ export default class Speech extends Component {
   }
 
   startListening = () => {
-    try {
-      this.listener.startListening()
-      this.setState({ listening: true })
-    } catch (err) {
-      console.log('Start listening: ', err)
+    if (!this.state.listening) {
+      try {
+        this.listener.startListening()
+        this.setState({ listening: true, listeningText: 'Stop Listening' })
+      } catch (err) {
+        console.log('Start listening: ', err)
+      }
+    } else {
+      this.listener.stopListening();
+      this.setState({ listening: false, listeningText: 'Start Listening' });
+    }
+  }
+
+  renderInterimPhrase = () => {
+    if (this.state.listening === true) {
+      return (
+        <h3 className="interim-text">{this.state.interimText}</h3>
+      )
+    } else {
+      return (
+        <h4 className="empty-section-header">No current phrases</h4>
+      )
     }
   }
 
   renderPhrases = () => {
-    return this.state.finalizedText.map((phrase, index) => {
-      return <Phrase englishPhrase={phrase} key={`${index}-${phrase}`} />
-    })
+    if (this.state.finalizedText.length > 0) {
+      return this.state.finalizedText.map((phrase, index) => {
+        return <Phrase englishPhrase={phrase} key={`${index}-${phrase}`} />
+      })
+    } else {
+      return (
+        <h4 className="empty-section-header">No phrases recorded</h4>
+      )
+    }
   }
 
   render() {
@@ -61,9 +85,14 @@ export default class Speech extends Component {
         <h1>Record Your Voice</h1>
         <h5>Start recording your voice and see the translation</h5>
         <button className="recording-button" onClick={this.startListening}>
-          Start listening
+          {this.state.listeningText}
         </button>
         <div>
+          <h2>Current Phrase</h2>
+          {this.renderInterimPhrase()}
+        </div>
+        <div>
+          <h2>Recorded Phrases</h2>
           {this.renderPhrases()}
         </div>
       </div>
