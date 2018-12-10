@@ -1,5 +1,6 @@
 body {
-  background-color: rgb(1, 88, 219);
+  /* background-color: rgb(0, 110, 255); */
+  background-color: #ffffff;
 }
 
 .App {
@@ -34,10 +35,6 @@ body {
   to {
     transform: rotate(360deg);
   }
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: #ffffff;
 }
 
 h1 {

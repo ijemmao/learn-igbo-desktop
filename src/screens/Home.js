@@ -3,12 +3,13 @@ import './../styles/Home.css';
 
 
 export default class Home extends Component {
-  
-  majorOption = (title) => {
+
+  majorOption = (title, description) => {
     return (
       
-      <div className="major-option-container">
+      <div id={title.toLowerCase()} className="major-option-container">
         <h2>{title}</h2>
+        <h5>{description}</h5>
       </div>
     )
   }
@@ -19,8 +20,8 @@ export default class Home extends Component {
         <h1>Learn Igbo</h1>
         <h5>An interactive web app to teach the Naija language</h5>
         <div className="major-options-container">
-          {this.majorOption('Camera')}
-          {this.majorOption('Speech')}
+          {this.majorOption('Camera', 'Interact with your camera and photos!')}
+          {this.majorOption('Speech', 'Say some words to get started!')}
         </div>
       </div>
     )
