@@ -1,6 +1,13 @@
 #logo {
   font-family: 'Montserrat', 'Avenir', sans-serif;
   font-weight: 900;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+#logo:hover {
+  color: rgb(31, 31, 31);
+  text-shadow: 0px 2px 3px rgba(65, 65, 65, 0.26);
 }
 
 h1, h5 {
