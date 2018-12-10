@@ -7,15 +7,15 @@ export default class Phrase extends Component {
     super(props);
     this.state = {
       igboWords: ['ya bụ n\'ezie na-adọrọ mmasị'],
-      englishWords: ['is is really interesting'] || this.props.englishPhrase.split(' '),
+      englishWords: this.props.englishPhrase.split(' '),
       expanded: false,
     }
   }
 
   componentWillMount = () => {
-    translate.translateEnglish(this.props.englishPhrase.split(' ')).then((res) => {
-      this.setState({ igboWords: res.words })
-    })
+    // translate.translateEnglish(this.props.englishPhrase).then((res) => {
+    //   console.log(res);
+    // })
   }
   
   renderIgbo = () => {

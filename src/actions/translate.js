@@ -6,7 +6,7 @@ const url = 'http://localhost:8080'
 const translateEnglish = (data) => {
   return new Promise((resolve, reject) => {
     axios.get(`${url}/translate`, {
-      params: { words: data },
+      params: { words: data }
     }).then((res) => {
       resolve(res.data)
     })
