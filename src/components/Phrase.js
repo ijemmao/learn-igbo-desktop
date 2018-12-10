@@ -25,7 +25,7 @@ export default class Phrase extends Component {
     prevNode.classList.remove('invisible')
     const prevWidth = prevNode.getBoundingClientRect().width;
     const { x, y, width } = e.target.getBoundingClientRect()
-    prevNode.style.top = `${y - 80}px`
+    prevNode.style.top = `${y - 60}px`
     prevNode.style.left = `${x + (width  - prevWidth) / 2}px`
   }
 
