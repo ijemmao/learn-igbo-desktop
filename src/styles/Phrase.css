@@ -19,5 +19,19 @@
 }
 
 .igbo {
-  
+
+}
+
+.igbo-word {
+  position: absolute;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: green;
+  display: block;
+  visibility: visible;
+}
+
+.invisible {
+  display: none;
+  visibility: hidden;
 }

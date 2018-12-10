@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import SpeechToText from 'speech-to-text';
-import Phrase from './../components/Phrase';
-import './../styles/Speech.css';
+import React, { Component } from 'react'
+import SpeechToText from 'speech-to-text'
+import Phrase from './../components/Phrase'
+import './../styles/Speech.css'
 
 export default class Speech extends Component {
 
@@ -19,13 +19,13 @@ export default class Speech extends Component {
     const onAnythingSaid = text => {
       this.setState({ interimText: text })
 
-    };
+    }
 
     const onEndEvent = () => {
       if (this.state.listening) {
         this.startListening()
       }
-    };
+    }
 
     const onFinalized = (text) => {
       this.setState({
@@ -35,7 +35,7 @@ export default class Speech extends Component {
     }
 
     try {
-      this.listener = new SpeechToText(onFinalized, onEndEvent, onAnythingSaid);
+      this.listener = new SpeechToText(onFinalized, onEndEvent, onAnythingSaid)
     } catch (error) {
       this.setState({ error: error.message })
     }
@@ -50,21 +50,20 @@ export default class Speech extends Component {
         console.log('Start listening: ', err)
       }
     } else {
-      this.listener.stopListening();
-      this.setState({ listening: false, listeningText: 'Start Listening' });
+      this.listener.stopListening()
+      this.setState({ listening: false, listeningText: 'Start Listening' })
     }
   }
 
   renderInterimPhrase = () => {
     if (this.state.listening === true) {
       return (
-        <h3 className="interim-text">{this.state.interimText}</h3>
+        <div className="current-phrase-container">
+          <h2>Current Phrase</h2>
+          <h3 className="interim-text">{this.state.interimText}</h3>
+        </div>
       )
-    } else {
-      return (
-        <h4 className="empty-section-header">No current phrases</h4>
-      )
-    }
+    } else return null
   }
 
   renderPhrases = () => {
@@ -87,10 +86,7 @@ export default class Speech extends Component {
         <button className="recording-button" onClick={this.startListening}>
           {this.state.listeningText}
         </button>
-        <div>
-          <h2>Current Phrase</h2>
           {this.renderInterimPhrase()}
-        </div>
         <div>
           <h2>Recorded Phrases</h2>
           {this.renderPhrases()}
