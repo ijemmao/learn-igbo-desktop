@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import translate from './../actions/translate';
-import './../styles/Phrase.css';
+import React, { Component } from 'react'
+import ReactLoading from 'react-loading'
+import translate from './../actions/translate'
+import './../styles/Phrase.css'
 
 export default class Phrase extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      igboWords: ['words', 'are', ],
+      igboWords: [], //['words', 'are', ],
       igboSentence: '',
       englishWords: this.props.englishPhrase.split(' '),
       englishSentence: this.props.englishSentence,
@@ -61,7 +62,7 @@ export default class Phrase extends Component {
           </h4>
         </span>
       )
-    } else return null;
+    } else return <ReactLoading className="loading" type={'spin'} color={'#ccc'} height={'10vh'} width={'10vh'} />
   }
 
   render() {

@@ -13,6 +13,7 @@
     "react": "^16.6.3",
     "react-anime": "^2.2.0",
     "react-dom": "^16.6.3",
+    "react-loading": "^2.0.3",
     "react-router-dom": "^4.3.1",
     "speech-to-text": "^2.9.0"
   },
