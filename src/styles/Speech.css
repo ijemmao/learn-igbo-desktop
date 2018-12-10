@@ -1,0 +1,12 @@
+.recording-button {
+  font-family: 'Avenir', sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+  height: 8vh;
+  width: 20vw;
+  border-radius: 10px;
+}
+
+.recording-button:hover {
+
+}

@@ -1,0 +1,14 @@
+.phrase-container {
+  border-radius: 5px;
+  background-color: #ccc;
+  width: 70vw;
+  text-align: left;
+  margin-left: 5vw;
+  cursor: pointer;
+}
+
+.phrase-english {
+  padding: 15px;
+  padding-left: 0;
+  margin-left: 5vw;
+}

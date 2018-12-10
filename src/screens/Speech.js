@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SpeechToText from 'speech-to-text';
-
+import Phrase from './../components/Phrase';
+import './../styles/Speech.css';
 
 export default class Speech extends Component {
 
@@ -8,7 +9,7 @@ export default class Speech extends Component {
     super(props)
     this.state = {
       interimText: '',
-      finalizedText: '',
+      finalizedText: [],
       listening: true,
     }
   }
@@ -26,7 +27,6 @@ export default class Speech extends Component {
     };
 
     const onFinalized = (text) => {
-      console.log('okokok', text, this.state.finalizedText)
       this.setState({
         finalizedText: [text, ...this.state.finalizedText],
         interimText: ''
@@ -49,14 +49,23 @@ export default class Speech extends Component {
     }
   }
 
+  renderPhrases = () => {
+    return this.state.finalizedText.map((phrase, index) => {
+      return <Phrase englishPhrase={phrase} key={`${index}-${phrase}`} />
+    })
+  }
+
   render() {
     return (
       <div>
         <h1>Record Your Voice</h1>
         <h5>Start recording your voice and see the translation</h5>
-        <button onClick={this.startListening}>
+        <button className="recording-button" onClick={this.startListening}>
           Start listening
         </button>
+        <div>
+          {this.renderPhrases()}
+        </div>
       </div>
     )
   }
