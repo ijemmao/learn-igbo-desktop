@@ -22,16 +22,22 @@ export default class Phrase extends Component {
   }
 
   enterHover = (e) => {
-    const prevNode = e.target.previousSibling
+    const prevNode = e.target.childNodes[2]
+    console.log(e.target.childNodes);
     prevNode.classList.remove('invisible')
-    const prevWidth = prevNode.getBoundingClientRect().width;
+    const prevWidth = prevNode.getBoundingClientRect().width
     const { x, y, width } = e.target.getBoundingClientRect()
-    prevNode.style.top = `${y - 60}px`
+    console.log(x, y, width)
+    // prevNode.style.top = `${y - 60}px`
     prevNode.style.left = `${x + (width  - prevWidth) / 2}px`
   }
 
   leaveHover = (e) => {
-    const prevNode = e.target.previousSibling
+    let prevNode = e.target.childNodes[2];
+    if (e.target.childNodes.length === 1) {
+      prevNode = e.target;
+    }
+    console.log(e.target.childNodes)
     prevNode.classList.add('invisible')
   }
 
@@ -39,14 +45,17 @@ export default class Phrase extends Component {
     return this.state.englishWords.map((word, index) => {
       return (
         <span className="word-translation-container">
-          <div className="igbo-word invisible">
-            <span>{this.state.igboWords[index]}</span>
-          </div>
           <span
             className={this.state.igboWords[index]}
             onMouseEnter={this.enterHover}
             onMouseLeave={this.leaveHover}
-          > { word } </span>
+          > { word } 
+          
+          
+            <div className="igbo-word invisible">
+              <span>{this.state.igboWords[index]}</span>
+            </div>
+          </span>
         </span>
       ) 
     })
