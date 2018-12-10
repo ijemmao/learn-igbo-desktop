@@ -8,8 +8,16 @@
   cursor: pointer;
 }
 
-.phrase-english {
+.phrase {
   padding: 15px;
   padding-left: 0;
   margin: 0 5vw;
+}
+
+.english {
+
+}
+
+.igbo {
+  
 }
