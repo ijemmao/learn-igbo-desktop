@@ -1,5 +1,10 @@
+body {
+  background-color: rgb(1, 88, 219);
+}
+
 .App {
   text-align: center;
+  font-family: 'Avenir', sans-serif;
 }
 
 .App-logo {
@@ -29,4 +34,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
+h5 {
+  font-size: 1.3em;
+}
+
+h6 {
+  font-size: 1em;
 }

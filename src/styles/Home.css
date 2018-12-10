@@ -1,0 +1,30 @@
+h1, h5 {
+  user-select: none;
+}
+
+h1 {
+  margin: 30px 0 10px 0;
+}
+
+.major-options-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+
+.major-option-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 70vh;
+  width: 50vh;
+  background-color: #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.major-option-container:hover {
+  box-shadow: 0px 10px 10px rgba(253, 253, 253, 0.4);
+  margin-top: -10px;
+}
