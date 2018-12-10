@@ -26,7 +26,9 @@
   position: absolute;
   padding: 10px;  
   border-radius: 5px;
-  background-color: green;
+  background: linear-gradient(#007c29, #018b5d);
+  border-top: 2px solid #4ddf7d;
+  color: white;
   display: block;
   visibility: visible;
 }
