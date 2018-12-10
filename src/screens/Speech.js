@@ -70,7 +70,7 @@ export default class Speech extends Component {
     // if (this.state.finalizedText.length > 0) {
     if (true) {
       // return this.state.finalizedText.map((phrase, index) => {
-      return ['this is something to render'].map((phrase, index) => {
+      return ['this is something to render', 'something else to render', 'one more time for the people in the back'].map((phrase, index) => {
         return <Phrase englishPhrase={phrase} key={`${index}-${phrase}`} />
       })
     } else {
@@ -89,8 +89,8 @@ export default class Speech extends Component {
           {this.state.listeningText}
         </button>
           {this.renderInterimPhrase()}
-        <div>
-          <h2>Recorded Phrases</h2>
+        <h2>Recorded Phrases</h2>
+        <div className="phrases-container">
           {this.renderPhrases()}
         </div>
       </div>
