@@ -54,9 +54,12 @@ export default class Phrase extends Component {
   renderIgbo = () => {
     if (this.state.igboWords.length > 0) {
       return (
-        <h3 className="phrase igbo">
-          {this.state.igboWords.join(' ')}
-        </h3>
+        <span>
+          <h3 className="language-header">Igbo</h3>
+          <h4 className="phrase igbo">
+            {this.state.igboWords.join(' ')}
+          </h4>
+        </span>
       )
     } else return null;
   }
@@ -64,9 +67,10 @@ export default class Phrase extends Component {
   render() {
     return (
       <div className="phrase-container">
-        <h3 className="phrase english">
+        <h3 className="language-header">English</h3>
+        <h4 className="phrase english">
           {this.renderIndividualEnglishWords()}
-        </h3>
+        </h4>
         {this.renderIgbo()}
       </div>
     )
