@@ -3,20 +3,21 @@
   font-weight: 900;
   cursor: pointer;
   transition: all .5s;
+  color: #ffffff;
 }
 
 #logo:hover {
-  color: rgb(31, 31, 31);
-  text-shadow: 0px 2px 3px rgba(65, 65, 65, 0.26);
+  color: #e0e0e0;
+  text-shadow: 0px 4px 5px rgba(65, 65, 65, 0.26);
 }
 
 h1, h5 {
   user-select: none;
-  color: #000;
 }
 
 h1 {
-  margin: 30px 0 10px 0;
+  padding-top: 30px;
+  margin: 0 0 10px 0;
 }
 
 a {
@@ -62,6 +63,6 @@ a {
 }
 
 .major-option-container:hover {
-  box-shadow: 0px 10px 10px rgba(82, 82, 82, 0.4);
+  box-shadow: 0px 10px 10px rgba(34, 44, 71, 0.4);
   margin-top: -10px;
 }
