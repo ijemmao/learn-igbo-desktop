@@ -39,6 +39,7 @@
   color: white;
   display: block;
   visibility: visible;
+  margin-top: -90px;
 }
 
 .invisible {
