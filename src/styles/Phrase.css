@@ -1,6 +1,6 @@
 .phrase-container {
   border-radius: 5px;
-  background-color: rgb(66, 0, 190);
+  background: linear-gradient(#580ee0, #4200be);
   color: #fff;
   width: 45vw;
   text-align: left;
