@@ -12,7 +12,8 @@
     "animejs": "^2.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "speech-to-text": "^2.9.0"
   },
   "scripts": {
     "start": "react-scripts start",

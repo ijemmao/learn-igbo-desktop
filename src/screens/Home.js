@@ -6,11 +6,14 @@ export default class Home extends Component {
 
   majorOption = (title, description) => {
     return (
-      
-      <div id={title.toLowerCase()} className="major-option-container">
-        <h2>{title}</h2>
-        <h5>{description}</h5>
-      </div>
+      <a href={`/${title.toLowerCase()}`}>
+        <div id={title.toLowerCase()} className="major-option-container">
+            <div>
+              <h2>{title}</h2>
+              <h5>{description}</h5>
+            </div>
+        </div>
+      </a>
     )
   }
 
