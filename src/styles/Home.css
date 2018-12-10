@@ -1,0 +1,49 @@
+h1, h5 {
+  user-select: none;
+  color: #000;
+}
+
+h1 {
+  margin: 30px 0 10px 0;
+}
+
+#camera {
+  background-color: rgb(0, 190, 79);
+}
+
+#speech {
+   background-color: rgb(66, 0, 190);
+}
+
+.major-option-container h2 {
+  margin: 0 0 0 4vw;
+}
+
+.major-option-container h5 {
+  margin: 15px 0 30px 4vw;
+  color: #ffffff;
+}
+
+.major-options-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+
+.major-option-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #ffffff;
+  text-align: left;
+  height: 50vh;
+  width: 70vh;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.major-option-container:hover {
+  box-shadow: 0px 10px 10px rgba(82, 82, 82, 0.4);
+  margin-top: -10px;
+}
