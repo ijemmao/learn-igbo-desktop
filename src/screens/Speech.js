@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SpeechToText from 'speech-to-text'
+import Navbar from './../components/Navbar'
 import Phrase from './../components/Phrase'
 import './../styles/Speech.css'
 
@@ -83,6 +84,7 @@ export default class Speech extends Component {
   render() {
     return (
       <div className="speech-container">
+        <Navbar />
         <h1>Record Your Voice</h1>
         <h5>Start recording your voice and see the translation</h5>
         <button className="recording-button" onClick={this.startListening}>
