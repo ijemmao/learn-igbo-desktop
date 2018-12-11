@@ -13,8 +13,13 @@ export default class Games extends Component {
   }
 
   vibrate = (e) => {
+    let target = e.target;
+    if (e.target.nodeName !== 'DIV') {
+      target = e.target.parentNode;
+    }
+    
     anime({
-      targets: e.target,
+      targets: target,
       translateX: ['-6rem', '6rem', 0],
       duration: 50,
       direction: 'alternate',
