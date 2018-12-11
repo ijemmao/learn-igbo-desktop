@@ -9,6 +9,7 @@
     "react-scripts": "2.1.1"
   },
   "dependencies": {
+    "animejs": "^2.2.0",
     "axios": "^0.18.0",
     "clarifai": "^2.9.0",
     "react": "^16.6.3",

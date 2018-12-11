@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import anime from 'animejs'
 import './../styles/Games.css'
 
 export default class Games extends Component {
@@ -9,6 +10,17 @@ export default class Games extends Component {
       englishWords: ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money'],
       igboOptions: ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego']
     }
+  }
+
+  vibrate = (e) => {
+    anime({
+      targets: e.target,
+      translateX: ['-6rem', '6rem', 0],
+      duration: 50,
+      direction: 'alternate',
+      loop: 10,
+      easing: 'easeOutBack',
+    });
   }
 
   random = () => {
@@ -46,7 +58,7 @@ export default class Games extends Component {
 
     return this.shuffle(Array.from(options)).map((option) => {
       return (
-        <div className="igbo-option">
+        <div className="igbo-option" onClick={this.vibrate}>
           <h2>{this.state.igboOptions[option]}</h2>
         </div>
       )
