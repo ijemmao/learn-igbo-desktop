@@ -7,6 +7,7 @@ export default class Games extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      question: 0,
       englishWords: ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money'],
       igboOptions: ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego']
     }
@@ -39,6 +40,15 @@ export default class Games extends Component {
     
   }
 
+  nextQuestion = () => {
+    if (this.state.question < this.state.englishWords.length - 1) {
+      this.setState({ question: this.state.question += 1 })
+
+    } else {
+      // end of game
+    }
+  }
+
   getEnglishCorresponding = (answer, childTarget) => {
     return this.state.englishWords.indexOf(answer) == this.state.igboOptions.indexOf(childTarget.innerText)
   }
@@ -56,6 +66,9 @@ export default class Games extends Component {
       // correct answer
       const { x, y, height, width } = childTarget.getBoundingClientRect()
       this.throwStars([[x, y, 'first', '-10rem', '6rem'], [x, y - height, 'second', '-10rem', '-6rem'], [x + width, y - height, 'third', '10rem', '-6rem'], [x + width, y, 'fourth', '10rem', '6rem']])
+      setTimeout(() => {
+        this.nextQuestion()
+      }, 100)
     } else {
       // incorrect answer
       if (!target.classList.contains('shaking')) {
@@ -79,26 +92,30 @@ export default class Games extends Component {
   }
 
   shuffle = (array) => {
-  let currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
 
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
   }
 
-  return array;
-}
+  renderQuestion = () => {
+    return this.state.englishWords[this.state.question]
+  }
 
   renderOptions = () => {
-    const correctAnswer = 0;
+    const correctAnswer = this.state.question;
     const options = new Set([correctAnswer]);
     while (options.size < 4) {
       let randomNumber = this.random();
@@ -109,7 +126,7 @@ export default class Games extends Component {
 
     return this.shuffle(Array.from(options)).map((option) => {
       return (
-        <div className="igbo-option" onClick={(e) => this.checkAnswer(e, this.state.englishWords[0])}>
+        <div className="igbo-option" onClick={(e) => this.checkAnswer(e, this.state.englishWords[this.state.question])}>
           <h2>{this.state.igboOptions[option]}</h2>
         </div>
       )
@@ -120,7 +137,7 @@ export default class Games extends Component {
     return (
       <div className="games-container">
         <h2>Which of the following means:</h2>
-        <h2>people</h2>
+        <h2>{this.renderQuestion()}</h2>
         <div className="games-options-container">
           {this.renderOptions()}
         </div>
