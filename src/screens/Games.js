@@ -57,14 +57,15 @@ export default class Games extends Component {
       const { x, y, height, width } = childTarget.getBoundingClientRect()
       this.throwStars([[x, y, 'first', '-10rem', '6rem'], [x, y - height, 'second', '-10rem', '-6rem'], [x + width, y - height, 'third', '10rem', '-6rem'], [x + width, y, 'fourth', '10rem', '6rem']])
     } else {
+      // incorrect answer
       if (!target.classList.contains('shaking')) {
         target.classList.add('shaking')
         anime({
           targets: target,
           translateX: ['-6rem', '6rem', 0],
-          duration: 50,
+          duration: 200,
           direction: 'alternate',
-          loop: 10,
+          loop: 3,
           easing: 'easeOutBack',
           complete: () => setTimeout(() => { target.classList.remove('shaking') }, 100)
         });
