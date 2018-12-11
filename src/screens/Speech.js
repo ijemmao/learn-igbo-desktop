@@ -82,7 +82,7 @@ export default class Speech extends Component {
 
   render() {
     return (
-      <div>
+      <div className="speech-container">
         <h1>Record Your Voice</h1>
         <h5>Start recording your voice and see the translation</h5>
         <button className="recording-button" onClick={this.startListening}>

@@ -1,10 +1,14 @@
+.speech-container {
+  background: linear-gradient(#580ee0, #4200be);
+}
+
 h2 {
   text-align: left;
   margin-left: 3vw;
 }
 
 .interim-text {
-  color: rgb(73, 73, 73);
+  color: #fff;
 }
 
 .empty-section-header {

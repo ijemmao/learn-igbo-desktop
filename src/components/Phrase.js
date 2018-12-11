@@ -28,7 +28,6 @@ export default class Phrase extends Component {
     const prevWidth = prevNode.getBoundingClientRect().width
     const { x, y, width } = e.target.getBoundingClientRect()
     console.log(x, y, width)
-    // prevNode.style.top = `${y - 60}px`
     prevNode.style.left = `${x + (width  - prevWidth) / 2}px`
   }
 
@@ -46,7 +45,7 @@ export default class Phrase extends Component {
       return (
         <span className="word-translation-container">
           <span
-            className={this.state.igboWords[index]}
+            className={`${this.state.igboWords[index]} english-word`}
             onMouseEnter={this.enterHover}
             onMouseLeave={this.leaveHover}
           > { word } 

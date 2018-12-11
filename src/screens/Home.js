@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import Anime from 'react-anime';
-import './../styles/Home.css';
+import React, { Component } from 'react'
+import Anime from 'react-anime'
+import './../styles/Home.css'
 
 export default class Home extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       renderPage: false,
     }
 
     setTimeout(() => {
-      this.setState({ renderPage: true });
-    }, 600);
+      this.setState({ renderPage: true })
+    }, 600)
   }
 
   majorOption = (title, description) => {
@@ -47,6 +47,6 @@ export default class Home extends Component {
           </div>
         </div>
       )
-    } else return null;
+    } else return null
   }
 }
