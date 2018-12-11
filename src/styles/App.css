@@ -38,3 +38,8 @@ button {
   outline: none;
   cursor: pointer;
 }
+
+.loading {
+  margin: 0 auto;
+  padding-bottom: 20px;
+}

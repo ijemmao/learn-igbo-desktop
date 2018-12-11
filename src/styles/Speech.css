@@ -1,5 +1,7 @@
 .speech-container {
   background: linear-gradient(#580ee0, #4200be);
+  min-height: 100vh;
+  height: auto;
 }
 
 h2 {

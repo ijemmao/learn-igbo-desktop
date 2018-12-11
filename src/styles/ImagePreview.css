@@ -1,0 +1,8 @@
+.image-preview-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-preview {
+  width: 45vw;
+}
