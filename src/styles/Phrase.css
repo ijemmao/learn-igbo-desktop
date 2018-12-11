@@ -17,6 +17,7 @@
 }
 
 .language-header {
+  font-family: 'Avenir', sans-serif;
   padding-top: 3vh;
   margin-left: 3vw;
   margin-bottom: 0;
@@ -46,9 +47,4 @@
 .invisible {
   display: none;
   visibility: hidden;
-}
-
-.loading {
-  margin: 0 auto;
-  padding-bottom: 20px;
 }
