@@ -34,6 +34,10 @@ h6 {
   font-size: 1em;
 }
 
+a {
+  color: #fff;
+}
+
 button {
   outline: none;
   cursor: pointer;

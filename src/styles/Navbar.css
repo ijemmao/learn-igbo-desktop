@@ -1,0 +1,36 @@
+.navbar-container {
+  padding: 0 30px;
+  height: 10vh;
+}
+
+.navbar-left-section {
+  display: flex;
+  align-items: center;
+  position: relative;
+  float: left;
+  height: 100%;
+}
+
+.navbar-left-section h3 {
+  margin-left: 20px;
+}
+
+.navbar-right-section {
+  display: flex;
+  align-items: center;
+  position: relative;
+  float: right;
+  height: 100%;
+}
+
+.navbar-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-options li {
+  font-size: 1.2em;
+  list-style-type: none;
+  margin: 0 30px;
+}
