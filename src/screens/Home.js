@@ -44,6 +44,7 @@ export default class Home extends Component {
           <div className="major-options-container">
             {this.majorOption('Camera', 'Interact with your camera and photos!')}
             {this.majorOption('Speech', 'Say some words to get started!')}
+            {this.majorOption('Games', 'Play some games to get interactive!')}
           </div>
         </div>
       )
