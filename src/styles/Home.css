@@ -1,3 +1,10 @@
+.home-container {
+  background: linear-gradient(#4294ff, #006eff);
+  min-height: 100vh;
+  height: fit-content;
+  padding-bottom: 50px;
+}
+
 #logo {
   font-family: 'Montserrat', 'Avenir', sans-serif;
   font-weight: 900;

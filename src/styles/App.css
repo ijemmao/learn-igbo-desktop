@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round|Montserrat:900');
 
 body {
-  background: linear-gradient(#4294ff, #006eff);
   text-align: center;
   color: #fff;
   font-family: 'Varela Round', 'Avenir', sans-serif;
-  padding-bottom: 50px;
   overscroll-behavior: none;
 }
 

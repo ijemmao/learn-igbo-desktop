@@ -38,7 +38,7 @@ export default class Home extends Component {
       return (
         <div className="home-container">
           <a href="/">
-            <h1 id="logo">Learn Igbo</h1>
+            <h1 id="logo">🌟Learn Igbo🇳🇬</h1>
           </a>
           <h5>An interactive web app to teach the Naija language</h5>
           <div className="major-options-container">
