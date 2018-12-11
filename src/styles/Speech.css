@@ -1,0 +1,37 @@
+.speech-container {
+  background: linear-gradient(#580ee0, #4200be);
+}
+
+h2 {
+  text-align: left;
+  margin-left: 3vw;
+}
+
+.interim-text {
+  color: #fff;
+}
+
+.empty-section-header {
+  color: rgb(119, 119, 119);
+}
+
+.recording-button {
+  font-family: 'Varela Round', 'Avenir', sans-serif;
+  background: linear-gradient(rgb(230, 37, 37), rgb(173, 11, 11));
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5em;
+  height: 8vh;
+  width: 20vw;
+  border-radius: 10px;
+}
+
+.recording-button:hover {
+
+}
+
+.phrases-container {
+  display: flex;
+  flex-wrap: wrap;
+}
