@@ -22,6 +22,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-self: center;
   height: 230px;
   width: 200px;
   border: 5px dashed #fffffff1;
@@ -29,7 +30,6 @@
   border-radius: 5px;
   background: transparent;
   margin-bottom: 3vw;
-  margin-left: 3vw;
   color: white;
   font-weight: bold;
   cursor: pointer;

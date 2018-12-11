@@ -65,7 +65,7 @@ export default class Phrase extends Component {
       return (
         <span>
           <h3 className="language-header">Igbo</h3>
-          <h4 className="phrase igbo">
+          <h4 className="phrase">
             {this.state.igboWords.join(' ')}
           </h4>
         </span>
@@ -77,7 +77,7 @@ export default class Phrase extends Component {
     return (
       <div className="phrase-container">
         <h3 className="language-header">English</h3>
-        <h4 className="phrase english">
+        <h4 className="phrase">
           {this.renderIndividualEnglishWords()}
         </h4>
         {this.renderIgbo()}
