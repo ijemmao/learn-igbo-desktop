@@ -1,5 +1,9 @@
 .camera-container {
-   background: linear-gradient(#33ca59, #009b22);
+   background: linear-gradient(#2EC25C, #059B22);
    min-height: 100vh;
    height: auto;
 } 
+
+.image-input {
+  display: none;
+}
