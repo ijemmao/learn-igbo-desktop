@@ -1,6 +1,7 @@
 .navbar-container {
   padding: 0 30px;
   height: 10vh;
+  user-select: none;
 }
 
 .navbar-left-section {

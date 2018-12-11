@@ -1,0 +1,37 @@
+.games-container {
+  color: rgb(34, 34, 34);
+}
+
+.games-container h2 {
+  text-align: center;
+  margin-left: 0;
+}
+
+.games-options-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 75vw;
+}
+
+.games-container .igbo-option {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 30vw;
+  height: 20vw;
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 0px 3px 10px rgba(34, 44, 71, 0.4);
+  cursor: pointer;
+  top: 0;
+  transition: all .2s;
+}
+
+.games-container .igbo-option:hover {
+  top: -10px;
+}
