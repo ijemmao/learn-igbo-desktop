@@ -12,20 +12,65 @@ export default class Games extends Component {
     }
   }
 
-  vibrate = (e) => {
-    let target = e.target;
-    if (e.target.nodeName !== 'DIV') {
-      target = e.target.parentNode;
-    }
+  throwStars = (starInformation) => {
+    starInformation.forEach((star) => {
+      const starElement = document.createElement('h1');
+      starElement.id = 'star'
+      starElement.classList.add(star[2])
+      starElement.innerText = '🌟'
+      starElement.style.left = `${star[0] - 30}px`
+      starElement.style.top = `${star[1]}px`
+      document.body.appendChild(starElement)
+    })
+
+    starInformation.forEach((star) => {
+      console.log(star)
+      anime({
+        targets: `.${star[2]}`,
+        translateX: star[3],
+        translateY: star[4],
+        opacity: [1, .4, 0],
+        duration: 800,
+        direction: 'normal',
+        easing: 'easeOutQuad',
+        complete: () => document.querySelector(`.${star[2]}`) ? document.querySelector(`.${star[2]}`).remove() : console.log('no star')
+      });
+    })
     
-    anime({
-      targets: target,
-      translateX: ['-6rem', '6rem', 0],
-      duration: 50,
-      direction: 'alternate',
-      loop: 10,
-      easing: 'easeOutBack',
-    });
+  }
+
+  getEnglishCorresponding = (answer, childTarget) => {
+    return this.state.englishWords.indexOf(answer) == this.state.igboOptions.indexOf(childTarget.innerText)
+  }
+
+  checkAnswer = (e, answer) => {
+    let target = e.target;
+    let childTarget;
+    if (e.target.nodeName !== 'DIV') {
+      target = e.target.parentNode
+    }
+    childTarget = target.childNodes[0]
+
+
+    if (this.getEnglishCorresponding(answer, childTarget)) {
+      // correct answer
+      const { x, y, height, width } = childTarget.getBoundingClientRect()
+      this.throwStars([[x, y, 'first', '-10rem', '6rem'], [x, y - height, 'second', '-10rem', '-6rem'], [x + width, y - height, 'third', '10rem', '-6rem'], [x + width, y, 'fourth', '10rem', '6rem']])
+    } else {
+      if (!target.classList.contains('shaking')) {
+        target.classList.add('shaking')
+        anime({
+          targets: target,
+          translateX: ['-6rem', '6rem', 0],
+          duration: 50,
+          direction: 'alternate',
+          loop: 10,
+          easing: 'easeOutBack',
+          complete: () => setTimeout(() => { target.classList.remove('shaking') }, 100)
+        });
+      }
+    }
+
   }
 
   random = () => {
@@ -63,7 +108,7 @@ export default class Games extends Component {
 
     return this.shuffle(Array.from(options)).map((option) => {
       return (
-        <div className="igbo-option" onClick={this.vibrate}>
+        <div className="igbo-option" onClick={(e) => this.checkAnswer(e, this.state.englishWords[0])}>
           <h2>{this.state.igboOptions[option]}</h2>
         </div>
       )

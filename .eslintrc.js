@@ -13,6 +13,7 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "semi-colons": "error",
         "indent": [
             "error",
             "tab"
