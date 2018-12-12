@@ -91,4 +91,10 @@
   margin: 0 5vw;
   box-shadow: 0px 10px 10px rgba(34, 44, 71, 0.4);
   bottom: -80vh;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.next-game-option-container:hover {
+  margin-top: -10px;
 }

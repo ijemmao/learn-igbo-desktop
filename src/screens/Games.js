@@ -11,9 +11,15 @@ export default class Games extends Component {
     super(props)
     this.state = {
       question: 0,
-      englishWords: ['people'], //|| ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
+      // englishWords: ['people'], //|| ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
       igboOptions: ['ndị mmadụ'],// || ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego', 'ụlọ ahịa']
+      englishWords: ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
+      igboOptions: ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego', 'ụlọ ahịa']
     }
+  }
+
+  resetGame = () => {
+    this.setState({ question: 0 })
   }
 
   throwStars = (starInformation) => {
@@ -54,13 +60,13 @@ export default class Games extends Component {
     )
   }
 
-  renderNextGameOptions = (optionText, delay) => {
+  renderNextGameOptions = (optionText, delay, callback) => {
       return (
         <Anime easing="easeOutElastic"
           duration={2000}
           delay={(el, index) => delay}
           translateY='-30vh'>
-          <div className="next-game-option-container">
+          <div className="next-game-option-container" onClick={callback}>
             <h3>
               {optionText}
             </h3>
@@ -143,18 +149,18 @@ export default class Games extends Component {
   renderOptions = () => {
     const correctAnswer = this.state.question;
     const options = new Set([correctAnswer]);
-    // while (options.size < 4) {
-    //   let randomNumber = this.random();
-    //   if (randomNumber !== correctAnswer && !options.has(randomNumber)) {
-    //     options.add(randomNumber);
-    //   }
-    // }
-    while (options.size < 1) {
+    while (options.size < 4) {
       let randomNumber = this.random();
       if (randomNumber !== correctAnswer && !options.has(randomNumber)) {
         options.add(randomNumber);
       }
     }
+    // while (options.size < 1) {
+    //   let randomNumber = this.random();
+    //   if (randomNumber !== correctAnswer && !options.has(randomNumber)) {
+    //     options.add(randomNumber);
+    //   }
+    // }
 
     return this.shuffle(Array.from(options)).map((option) => {
       return (
@@ -183,7 +189,7 @@ export default class Games extends Component {
           <h1>Congratulations!</h1>
           {this.renderCongrats()}
           <div className="next-game-options-container">
-            {this.renderNextGameOptions('Play again', 1000)}
+            {this.renderNextGameOptions('Play again', 1000, this.resetGame)}
             {this.renderNextGameOptions('Choose a game', 1100)}
           </div>
         </span>
