@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import anime from 'animejs'
+import Anime from 'react-anime'
 import Navbar from './../components/Navbar'
 import ProgressBar from './../components/ProgressBar'
 import './../styles/Games.css'
@@ -41,43 +42,37 @@ export default class Games extends Component {
     
   }
 
+  renderCongrats = () => {
+    return (
+      <Anime easing="easeOutElastic"
+        duration={1700}
+        delay={(el, index) => index * 240}
+        translateY='-30vh'>
+        <h1 className="congratulations-icons">✨🏆✨</h1>
+        <h2 className="post-game-text">You successfully completed this level</h2>
+      </Anime>
+    )
+  }
+
+  renderNextGameOptions = (optionText, delay) => {
+      return (
+        <Anime easing="easeOutElastic"
+          duration={2000}
+          delay={(el, index) => delay}
+          translateY='-30vh'>
+          <div className="next-game-option-container">
+            <h3>
+              {optionText}
+            </h3>
+          </div>
+        </Anime>
+      )
+  }
+
   nextQuestion = () => {
-    if (this.state.question === this.state.englishWords.length - 1) {
-      console.log('okokoko')
-      const congratulateContainer = document.querySelector('.games-container')
-      const congratulate = document.createElement('h1')
-      congratulate.classList.add('congratulations-icons')
-      congratulate.innerText = '✨🏆✨'
-      const postGameText = document.createElement('h2')
-      postGameText.classList.add('post-game-text')
-      postGameText.innerText = 'You successfully completed this level'
-      postGameText.style.color = '#fff'
-      postGameText.style.opacity = '0'
-      congratulateContainer.appendChild(congratulate)
-      congratulateContainer.appendChild(postGameText)
-
-      anime({
-        targets: '.congratulations-icons',
-        marginTop: '0rem',
-        opacity: [0 , 1],
-        duration: 800,
-        direction: 'normal',
-        easing: 'easeOutQuad',
-        complete: () => congratText()
-      });
-
-      const congratText = () => {
-        anime({
-          targets: '.post-game-text',
-          marginTop: '17rem',
-          opacity: [0, 1],
-          duration: 800,
-          direction: 'normal',
-          easing: 'easeOutQuad'
-        });
-      }
-    }
-    this.setState({ question: this.state.question += 1 })
+    setTimeout(() => {
+      this.setState({ question: this.state.question += 1 })
+    }, 1000)
   }
 
   getEnglishCorresponding = (answer, childTarget) => {
@@ -186,6 +181,11 @@ export default class Games extends Component {
       return (
         <span className="congratulations-container">
           <h1>Congratulations!</h1>
+          {this.renderCongrats()}
+          <div className="next-game-options-container">
+            {this.renderNextGameOptions('Play again', 1000)}
+            {this.renderNextGameOptions('Choose a game', 1100)}
+          </div>
         </span>
       )
     }

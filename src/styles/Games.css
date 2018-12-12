@@ -59,11 +59,36 @@
   position: absolute;
   width: 100%;
   font-size: 9rem;
-  margin-top: .5rem;
+  bottom: 20vh;
 }
 
 .post-game-text {
   position: absolute;
-  width: 100%;  
-  margin-top: .5rem;
+  color: #fff;
+  width: 100%;
+  bottom: 10vh;
+}
+
+.next-game-options-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.next-game-option-container {
+  font-family: 'Avenir', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 13vh;
+  width: 20vw;
+  background-color: #fff;
+  color: rgb(34, 34, 34);
+  border-radius: 10px;
+  margin: 0 5vw;
+  box-shadow: 0px 10px 10px rgba(34, 44, 71, 0.4);
+  bottom: -80vh;
 }
