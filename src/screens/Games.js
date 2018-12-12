@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import anime from 'animejs'
+import Navbar from './../components/Navbar'
 import './../styles/Games.css'
 
 export default class Games extends Component {
@@ -136,8 +137,9 @@ export default class Games extends Component {
   render() {
     return (
       <div className="games-container">
-        <h2>Which of the following means:</h2>
-        <h2>{this.renderQuestion()}</h2>
+        <Navbar />
+        <h2 className="games-question">Which of the following means:</h2>
+        <h2 className="games-question">{this.renderQuestion()}</h2>
         <div className="games-options-container">
           {this.renderOptions()}
         </div>

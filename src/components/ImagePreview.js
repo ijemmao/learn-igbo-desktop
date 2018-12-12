@@ -76,14 +76,18 @@ export default class ImagePreview extends Component {
         <input className="image-input" type="file" accept="image/png, image/jpeg" onChange={this.renderImage}/>
         <button className="choose-image" onClick={this.clickInput}>Upload Photo</button>
         <div className="image-results-container">
-          <span className="image-preview">
+          <div className="image-results-headers-container">
             <h3 className="image-result-header">Uploaded Photo</h3>
-            <img src="/" />
-          </span>
-          <div className="suggestions-container">
             <h3 className="image-result-header">Detected Terms</h3>
-            <div className="suggestions-labels-container">
-              {this.renderSuggestions()}
+          </div>
+          <div className="image-results-content-container">
+            <div className="image-preview">
+              <img src="/" />
+            </div>
+            <div className="suggestions-container">
+              <div className="suggestions-labels-container">
+                {this.renderSuggestions()}
+              </div>
             </div>
           </div>
         </div>
