@@ -35,6 +35,10 @@ export default class Game extends Component {
     this.setState({ question: 0 })
   }
 
+  backToGames = () => {
+    window.location = '/games'
+  }
+
   throwStars = (starInformation) => {
     starInformation.forEach((star) => {
       const starElement = document.createElement('h1');
@@ -201,7 +205,7 @@ export default class Game extends Component {
           {this.renderCongrats()}
           <div className="next-game-options-container">
             {this.renderNextGameOptions('Play again', 1000, this.resetGame)}
-            {this.renderNextGameOptions('Choose a game', 1100)}
+            {this.renderNextGameOptions('Choose a game', 1100, this.backToGames)}
           </div>
         </span>
       )
