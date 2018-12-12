@@ -1,0 +1,27 @@
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.progress-bar-back {
+  width: 60vw;
+  height: 10px;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: inset 0 0 2px rgba(163, 163, 163, 0.418);
+}
+
+.completion-bar {
+  width: 30vw;
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(rgb(0, 175, 73), rgb(0, 116, 48));
+}
+
+.progress-status {
+  margin-left: 5vw;
+  margin-right: -15vw;
+  color: #fff;
+}

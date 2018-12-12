@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import anime from 'animejs'
 import Navbar from './../components/Navbar'
+import ProgressBar from './../components/ProgressBar'
 import './../styles/Games.css'
 
 export default class Games extends Component {
@@ -138,6 +139,7 @@ export default class Games extends Component {
     return (
       <div className="games-container">
         <Navbar />
+        <ProgressBar num={0} den={10} />
         <h2 className="games-question">Which of the following means:</h2>
         <h1 className="games-question">{this.renderQuestion()}</h1>
         <div className="games-options-container">
