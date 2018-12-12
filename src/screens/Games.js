@@ -9,8 +9,8 @@ export default class Games extends Component {
     super(props)
     this.state = {
       question: 0,
-      englishWords: ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money'],
-      igboOptions: ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego']
+      englishWords: ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
+      igboOptions: ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego', 'ụlọ ahịa']
     }
   }
 
@@ -139,7 +139,7 @@ export default class Games extends Component {
       <div className="games-container">
         <Navbar />
         <h2 className="games-question">Which of the following means:</h2>
-        <h2 className="games-question">{this.renderQuestion()}</h2>
+        <h1 className="games-question">{this.renderQuestion()}</h1>
         <div className="games-options-container">
           {this.renderOptions()}
         </div>
