@@ -48,18 +48,34 @@ export default class Games extends Component {
       const congratulate = document.createElement('h1')
       congratulate.classList.add('congratulations-icons')
       congratulate.innerText = '✨🏆✨'
+      const postGameText = document.createElement('h2')
+      postGameText.classList.add('post-game-text')
+      postGameText.innerText = 'You successfully completed this level'
+      postGameText.style.color = '#fff'
+      postGameText.style.opacity = '0'
       congratulateContainer.appendChild(congratulate)
+      congratulateContainer.appendChild(postGameText)
 
       anime({
         targets: '.congratulations-icons',
-        // translateX: '3rem',
-        // translateY: '-3rem ',
         marginTop: '0rem',
         opacity: [0 , 1],
         duration: 800,
         direction: 'normal',
-        easing: 'easeOutQuad'
+        easing: 'easeOutQuad',
+        complete: () => congratText()
       });
+
+      const congratText = () => {
+        anime({
+          targets: '.post-game-text',
+          marginTop: '17rem',
+          opacity: [0, 1],
+          duration: 800,
+          direction: 'normal',
+          easing: 'easeOutQuad'
+        });
+      }
     }
     this.setState({ question: this.state.question += 1 })
   }
