@@ -14,10 +14,10 @@
 }
 
 .completion-bar {
-  width: 30vw;
   height: 10px;
   border-radius: 5px;
   background: linear-gradient(rgb(0, 175, 73), rgb(0, 116, 48));
+  transition: all .2s;
 }
 
 .progress-status {

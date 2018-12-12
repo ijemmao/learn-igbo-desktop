@@ -1,6 +1,8 @@
 .games-container {
   color: rgb(34, 34, 34);
   background-color: rgb(243, 147, 91);
+  min-height: 100vh;
+  height: auto;
 }
 
 #star {

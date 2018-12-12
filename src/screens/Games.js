@@ -139,7 +139,7 @@ export default class Games extends Component {
     return (
       <div className="games-container">
         <Navbar />
-        <ProgressBar num={0} den={10} />
+        <ProgressBar num={this.state.question + 1} den={this.state.englishWords.length} />
         <h2 className="games-question">Which of the following means:</h2>
         <h1 className="games-question">{this.renderQuestion()}</h1>
         <div className="games-options-container">
