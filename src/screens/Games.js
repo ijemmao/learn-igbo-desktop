@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Navbar from './../components/Navbar'
+import levelsData from './../assets/data/quiz-levels'
 import './../styles/Games.css'
 
 export default class Games extends Component {
@@ -7,7 +8,7 @@ export default class Games extends Component {
     super(props)
 
     this.state = {
-      levels: ['alphabet', 'body parts', 'greetings', 'animals', 'family', 'professions', 'places', 'directions', 'food', 'time', 'colors', 'phrases'],
+      levels: levelsData.levels
     }
   }
 

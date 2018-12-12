@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import ProgressBar from '../components/ProgressBar'
 import Music from '../components/Music'
 import './../styles/Game.css'
+import levelData from './../assets/data/quiz-levels.json'
 import starSound from './../assets/sounds/star.wav'
 import congratsSound from './../assets/sounds/achievement.mp3'
 
@@ -16,16 +17,17 @@ window.addEventListener('scroll', (e) => {
 const star = new Music({ uri: starSound })
 const congrats = new Music({ uri: congratsSound })
 
+
 export default class Game extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      question: 10,
-      // englishWords: ['people'], //|| ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
-      igboOptions: ['ndị mmadụ'],// || ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego', 'ụlọ ahịa']
-      englishWords: ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
-      igboOptions: ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego', 'ụlọ ahịa']
+      question: 0,
+      englishWords: levelData[`${this.props.match.params.level}`].english,
+      igboOptions: levelData[`${this.props.match.params.level}`].igbo, 
+      // englishWords: ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
+      // igboOptions: ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego', 'ụlọ ahịa']
     }
   }
 

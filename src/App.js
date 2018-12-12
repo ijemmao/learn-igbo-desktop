@@ -14,7 +14,7 @@ const App = () => (
       <Route path="/camera" component={Camera} />
       <Route path="/speech" component={Speech} />
       <Route path="/games" component={Games} />
-      <Route path="/game" component={Game} />
+      <Route path="/game/:level" component={Game} />
     </Switch>
   </Router>
 )
