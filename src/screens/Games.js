@@ -3,20 +3,25 @@ import anime from 'animejs'
 import Anime from 'react-anime'
 import Navbar from './../components/Navbar'
 import ProgressBar from './../components/ProgressBar'
+import Music from './../components/Music'
 import './../styles/Games.css'
+import starSound from './../assets/sounds/star.wav'
+import congratsSound from './../assets/sounds/achievement.mp3'
 
 var scrollTop;
-
 window.addEventListener('scroll', (e) => {
   scrollTop = window.pageYOffset
 })
+
+const star = new Music({ uri: starSound })
+const congrats = new Music({ uri: congratsSound })
 
 export default class Games extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      question: 0,
+      question: 10,
       // englishWords: ['people'], //|| ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
       igboOptions: ['ndị mmadụ'],// || ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego', 'ụlọ ahịa']
       englishWords: ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
@@ -77,6 +82,8 @@ export default class Games extends Component {
       // correct answer
       const { x, y, height, width } = childTarget.getBoundingClientRect()
       this.throwStars([[x, y, 'first', '-10rem', '6rem'], [x, y - height, 'second', '-10rem', '-6rem'], [x + width, y - height, 'third', '10rem', '-6rem'], [x + width, y, 'fourth', '10rem', '6rem']])
+      star.togglePlay();
+
       setTimeout(() => {
         this.nextQuestion()
       }, 100)
@@ -191,6 +198,7 @@ export default class Games extends Component {
         </span>
       )
     } else {
+      congrats.togglePlay()
       return (
         <span className="congratulations-container">
           <h1>Congratulations!</h1>

@@ -10,7 +10,6 @@ export default class ProgressBar extends Component {
 
   componentDidUpdate = () => {
     const progressElement = document.querySelector('.completion-bar')
-    console.log(this.props.num, this.props.den, this.props.num / this.props.den)
     progressElement.style.width = `${this.props.num / this.props.den * 100}%`
   }
 
