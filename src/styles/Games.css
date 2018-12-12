@@ -1,6 +1,7 @@
 .games-container {
   color: rgb(34, 34, 34);
   background-color: rgb(243, 147, 91);
+  padding-bottom: 5vh;
   min-height: 100vh;
   height: auto;
 }
