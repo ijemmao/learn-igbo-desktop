@@ -5,6 +5,12 @@ import Navbar from './../components/Navbar'
 import ProgressBar from './../components/ProgressBar'
 import './../styles/Games.css'
 
+var scrollTop;
+
+window.addEventListener('scroll', (e) => {
+  scrollTop = window.pageYOffset
+})
+
 export default class Games extends Component {
 
   constructor(props) {
@@ -29,7 +35,7 @@ export default class Games extends Component {
       starElement.classList.add(star[2])
       starElement.innerText = '🌟'
       starElement.style.left = `${star[0] - 30}px`
-      starElement.style.top = `${star[1]}px`
+      starElement.style.top = `${star[1] + scrollTop}px`
       document.body.appendChild(starElement)
     })
 
