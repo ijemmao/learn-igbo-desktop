@@ -10,8 +10,8 @@ export default class Games extends Component {
     super(props)
     this.state = {
       question: 0,
-      englishWords: ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
-      igboOptions: ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego', 'ụlọ ahịa']
+      englishWords: ['people'], //|| ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
+      igboOptions: ['ndị mmadụ'],// || ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego', 'ụlọ ahịa']
     }
   }
 
@@ -27,7 +27,6 @@ export default class Games extends Component {
     })
 
     starInformation.forEach((star) => {
-      console.log(star)
       anime({
         targets: `.${star[2]}`,
         translateX: star[3],
@@ -43,12 +42,26 @@ export default class Games extends Component {
   }
 
   nextQuestion = () => {
-    if (this.state.question < this.state.englishWords.length - 1) {
-      this.setState({ question: this.state.question += 1 })
+    if (this.state.question === this.state.englishWords.length - 1) {
+      console.log('okokoko')
+      const congratulateContainer = document.querySelector('.games-container')
+      const congratulate = document.createElement('h1')
+      congratulate.classList.add('congratulations-icons')
+      congratulate.innerText = '✨🏆✨'
+      congratulateContainer.appendChild(congratulate)
 
-    } else {
-      // end of game
+      anime({
+        targets: '.congratulations-icons',
+        // translateX: '3rem',
+        // translateY: '-3rem ',
+        marginTop: '0rem',
+        opacity: [0 , 1],
+        duration: 800,
+        direction: 'normal',
+        easing: 'easeOutQuad'
+      });
     }
+    this.setState({ question: this.state.question += 1 })
   }
 
   getEnglishCorresponding = (answer, childTarget) => {
@@ -119,7 +132,13 @@ export default class Games extends Component {
   renderOptions = () => {
     const correctAnswer = this.state.question;
     const options = new Set([correctAnswer]);
-    while (options.size < 4) {
+    // while (options.size < 4) {
+    //   let randomNumber = this.random();
+    //   if (randomNumber !== correctAnswer && !options.has(randomNumber)) {
+    //     options.add(randomNumber);
+    //   }
+    // }
+    while (options.size < 1) {
       let randomNumber = this.random();
       if (randomNumber !== correctAnswer && !options.has(randomNumber)) {
         options.add(randomNumber);
@@ -135,16 +154,32 @@ export default class Games extends Component {
     })
   }
 
+  renderState = () => {
+    if (this.state.question < this.state.englishWords.length) {
+      return (
+        <span>
+          <ProgressBar num={this.state.question + 1} den={this.state.englishWords.length} />
+          <h2 className="games-question">Which of the following means:</h2>
+          <h1 className="games-question">{this.renderQuestion()}</h1>
+          <div className="games-options-container">
+            {this.renderOptions()}
+          </div>
+        </span>
+      )
+    } else {
+      return (
+        <span className="congratulations-container">
+          <h1>Congratulations!</h1>
+        </span>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="games-container">
         <Navbar />
-        <ProgressBar num={this.state.question + 1} den={this.state.englishWords.length} />
-        <h2 className="games-question">Which of the following means:</h2>
-        <h1 className="games-question">{this.renderQuestion()}</h1>
-        <div className="games-options-container">
-          {this.renderOptions()}
-        </div>
+        {this.renderState()}
       </div>
     )
   }
