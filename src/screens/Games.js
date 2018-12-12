@@ -48,33 +48,6 @@ export default class Games extends Component {
     
   }
 
-  renderCongrats = () => {
-    return (
-      <Anime easing="easeOutElastic"
-        duration={1700}
-        delay={(el, index) => index * 240}
-        translateY='-30vh'>
-        <h1 className="congratulations-icons">✨🏆✨</h1>
-        <h2 className="post-game-text">You successfully completed this level</h2>
-      </Anime>
-    )
-  }
-
-  renderNextGameOptions = (optionText, delay, callback) => {
-      return (
-        <Anime easing="easeOutElastic"
-          duration={2000}
-          delay={(el, index) => delay}
-          translateY='-30vh'>
-          <div className="next-game-option-container" onClick={callback}>
-            <h3>
-              {optionText}
-            </h3>
-          </div>
-        </Anime>
-      )
-  }
-
   nextQuestion = () => {
     setTimeout(() => {
       this.setState({ question: this.state.question += 1 })
@@ -169,6 +142,34 @@ export default class Games extends Component {
         </div>
       )
     })
+  }
+
+  renderCongrats = () => {
+    return (
+      <Anime easing="easeOutElastic"
+        duration={1700}
+        delay={(el, index) => index * 240}
+        translateY='-30vh'>
+        <h1 className="congratulations-icons">✨🏆✨</h1>
+        <h2 className="post-game-text">You successfully completed this level</h2>
+      </Anime>
+    )
+  }
+
+  renderNextGameOptions = (optionText, delay, callback) => {
+    return (
+      <Anime easing="easeOutElastic"
+        duration={2000}
+        delay={(el, index) => delay}
+        translateY='-30vh'
+        opacity='1'>
+        <div className="next-game-option-container" onClick={callback}>
+          <h3>
+            {optionText}
+          </h3>
+        </div>
+      </Anime>
+    )
   }
 
   renderState = () => {
