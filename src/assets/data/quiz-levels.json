@@ -1,5 +1,5 @@
 {
-  "levels": ["alphabet", "body parts", "greetings", "animals", "family", "professions", "places", "directions", "food", "time", "colors", "phrases", "general"],
+  "levels": ["alphabet", "body parts", "greetings", "animals", "clothes", "family", "professions", "places", "travel", "directions", "food", "time", "colors", "phrases", "general"],
   "animals": {
     "english": ["dog", "lion", "cow", "goat", "bird", "monkey", "chicken", "elephant", "fish", "bug", "snake", "mouse"],
     "igbo": ["nkịta", "ọdụm", "ehi", "ewu", "nnunu", "enwe", "ọkụkọ", "enyí", "azụ", "ahụhụ", "agwọ", "òké"]
@@ -7,6 +7,14 @@
   "body parts": {
     "english": ["head", "foot", "arm", "knee", "waist", "hand", "neck", "nose", "ear", "hair", "shoulder", "finger"],
     "igbo": ["isi", "ụkwụ", "ogwe aka", "ikpere", "n'úkwù", "aka", "n'olu", "imi", "ntị", "ntutu", "ubu", "mkpịsị aka"]
+  },
+  "clothes": {
+    "english": ["shirt", "sweater", "jacket", "coat", "socks", "shoes", "trousers", "pajamas", "underwear", "hat", "skirt"],
+    "igbo": ["afe", "afe oyi", "jaketi", "koti", "soksi", "akpụkwụ", "traụza", "afeụla", "ọgọdọ", "okpu", "peteli"]
+  },
+  "colors": {
+    "english": ["red", "silver", "yellow", "green", "orange", "pink", "purple", "black", "gold", "white", "gray"],
+    "igbo": ["uhie", "olaocha", "edo", "anunu", "oroma", "uhie ocha", "ugo", "oji", "olaedo", "ocha", "ucha nzu"]
   },
   "family": {
     "english": ["mother", "sister", "grandfather", "brother", "father", "friend", "cousin", "grandmother", "uncle", "aunt"],
@@ -19,6 +27,10 @@
   "professions": {
     "english": ["policeman", "doctor", "teacher", "lawyer", "actor", "student", "chairman", "leader", "nurse", "janitor"],
     "igbo": ["onye uweojii", "dọkịta", "onye nkụzi", "omee", "nwa akwukwo", "onyeisi oche", "onye ndu", "nọọsụ", "nza"]
+  },
+  "travel": {
+    "english": ["airport", "train", "car", "airplane", "hotel", "ticket", "luggage"],
+    "igbo": ["ọdụ ụgbọelu", "ụgbọ oloko", "ụgbọ ala", "ụgbọelu", "ụlọ oriri na ọghụghụ", "tiket", "ngwo ngwo/ibu"]
   },
   "general": {
     "english": ["people", "water", "food", "sleep", "good morning", "good night", "thank you", "name", "time", "music", "money", "store"],
