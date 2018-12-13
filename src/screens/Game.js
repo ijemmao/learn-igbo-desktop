@@ -10,7 +10,7 @@ import levelData from './../assets/data/quiz-levels.json'
 import starSound from './../assets/sounds/star.wav'
 import congratsSound from './../assets/sounds/achievement.mp3'
 
-let scrollTop;
+let scrollTop = 0;
 window.addEventListener('scroll', (e) => {
   scrollTop = window.pageYOffset
 })
@@ -45,7 +45,8 @@ export default class Game extends Component {
       starElement.classList.add(star[2])
       starElement.innerText = '🌟'
       starElement.style.left = `${star[0] - 30}px`
-      starElement.style.top = `${star[1] + scrollTop}px`
+      starElement.style.top = `${star[1] + scrollTop }px`
+      console.log(star)
       document.body.appendChild(starElement)
     })
 
