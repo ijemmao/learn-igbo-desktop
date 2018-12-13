@@ -29,10 +29,11 @@
   font-size: 22px;
   border-radius: 5px;
   background: transparent;
-  margin-bottom: 3vw;
+  margin: 5vh 15vw;
   color: #3f3f3f;
   font-weight: bold;
   cursor: pointer;
+  transition: all .2s;
 }
 
 .choose-image:before {
@@ -40,6 +41,11 @@
   width: 50px;
   height: 50px;
   margin: 0 auto;
+}
+
+.choose-image:hover {
+  box-shadow: 0px 10px 10px rgba(34, 44, 71, 0.4);
+  margin-top: 4vh;
 }
 
 .image-results-container {
