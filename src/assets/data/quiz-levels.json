@@ -30,7 +30,7 @@
   },
   "numbers": {
     "english": ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
-    "igbo": ["adigi", "abụọ", "atọ", "anọ", "ise", "isii", "asaa", "asato", "eteghiete"]
+    "igbo": ["adigi", "otu", "abụọ", "atọ", "anọ", "ise", "isii", "asaa", "asato", "eteghiete"]
   },
   "numbers 2": {
     "english": ["ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"],
