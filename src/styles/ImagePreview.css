@@ -25,12 +25,12 @@
   align-self: center;
   height: 230px;
   width: 200px;
-  border: 5px dashed #fffffff1;
+  border: 5px dashed #3f3f3ff1;
   font-size: 22px;
   border-radius: 5px;
   background: transparent;
   margin-bottom: 3vw;
-  color: white;
+  color: #3f3f3f;
   font-weight: bold;
   cursor: pointer;
 }
@@ -97,4 +97,8 @@
 
  .suggestions-labels-container>* {
     flex: 1 1 33%;
+}
+
+.hidden {
+  display: none;
 }
