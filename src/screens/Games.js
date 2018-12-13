@@ -30,6 +30,7 @@ export default class Games extends Component {
       <div className="games-container">
         <Navbar />
         <h1 className="games-header">Game Levels</h1>
+        <h5>Start practicing your Igbo below!</h5>
         <div className="game-level-options-container">
           {this.renderLevelOptions()}
         </div>

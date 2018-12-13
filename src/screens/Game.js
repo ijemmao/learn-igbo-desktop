@@ -25,9 +25,7 @@ export default class Game extends Component {
     this.state = {
       question: 0,
       englishWords: levelData[`${this.props.match.params.level}`].english,
-      igboOptions: levelData[`${this.props.match.params.level}`].igbo, 
-      // englishWords: ['people', 'water', 'food', 'sleep', 'good morning', 'good night', 'thank you', 'name', 'time', 'music', 'money', 'store'],
-      // igboOptions: ['ndị mmadụ', 'mmiri', 'nri', 'ụra', 'ụtụtụ ọma', 'ka chifoo', 'daalụ', 'aha', 'oge', 'egwu', 'ego', 'ụlọ ahịa']
+      igboOptions: levelData[`${this.props.match.params.level}`].igbo,
     }
   }
 
