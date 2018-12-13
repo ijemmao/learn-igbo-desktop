@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
 import convertNumber from './../actions/convert-number'
+import './../styles/Convert.css'
+
+window.addEventListener('keydown', (e) => {
+  if (e.keyCode === 13) {
+    document.querySelector('button').click()
+  }
+})
 
 export default class Convert extends Component {
   constructor(props) {
@@ -31,15 +38,21 @@ export default class Convert extends Component {
       console.log('correct!!')
     } else {
       console.log('incorrect')
+      e.target.previousSibling.value = ''
     }
   }
 
   render() {
     return (
-      <div>
-        <h2>{this.state.currentNumberIgbo}</h2>
-        <input type="text" />
-        <button onClick={this.handleAnswer}>enter</button>
+      <div className="convert-container">
+        <h2 className="convert-header">What's the number for:</h2>
+        <h2 className="convert-header">{this.state.currentNumberIgbo}</h2>
+        <div className="convert-input-container">
+          <input type="text" />
+          <button onClick={this.handleAnswer}>
+            <h3>enter</h3>
+          </button>
+        </div>
       </div>
     )
   }
