@@ -1,3 +1,10 @@
+.home-container {
+  background: linear-gradient(#4294ff, #006eff);
+  min-height: 100vh;
+  height: fit-content;
+  padding-bottom: 5vh;
+}
+
 #logo {
   font-family: 'Montserrat', 'Avenir', sans-serif;
   font-weight: 900;
@@ -19,12 +26,23 @@ a {
   text-decoration: none;
 }
 
+.home-container a {
+  transform: translateY(100vh);
+}
+
 #camera {
   background-color: rgb(0, 190, 79);
 }
 
 #speech {
-   background-color: rgb(66, 0, 190);
+  background-color: rgb(66, 0, 190);
+}
+  
+#games {
+  margin: 10vh 0;
+  height: 40vh;
+  width: 86vw;
+  background-color: rgb(243, 147, 91);
 }
 
 .major-option-container h2 {
@@ -38,6 +56,7 @@ a {
 
 .major-options-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   width: 100vw;
 }
@@ -55,10 +74,9 @@ a {
   cursor: pointer;
   transition: all .2s;
   box-shadow: 0px 3px 10px rgba(34, 44, 71, 0.4);
-  top: 90vh;
 }
 
 .major-option-container:hover {
-  box-shadow: 0px 10px 10px rgba(34, 44, 71, 0.4);
+  box-shadow: 0px 10px 10px rgba(34, 44, 71, 0.4);  
   margin-top: -10px;
 }

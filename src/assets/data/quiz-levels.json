@@ -1,0 +1,63 @@
+{
+  "levels": ["alphabet", "body parts", "greetings", "animals", "clothes", "family", "numbers", "professions", "places", "travel", "directions", "food", "time", "colors", "phrases", "general"],
+  "animals": {
+    "english": ["dog", "lion", "cow", "goat", "bird", "monkey", "chicken", "elephant", "fish", "bug", "snake", "mouse"],
+    "igbo": ["nkịta", "ọdụm", "ehi", "ewu", "nnunu", "enwe", "ọkụkọ", "enyí", "azụ", "ahụhụ", "agwọ", "òké"]
+  },
+  "body parts": {
+    "english": ["head", "foot", "arm", "knee", "waist", "hand", "neck", "nose", "ear", "hair", "shoulder", "finger"],
+    "igbo": ["isi", "ụkwụ", "ogwe aka", "ikpere", "n'úkwù", "aka", "n'olu", "imi", "ntị", "ntutu", "ubu", "mkpịsị aka"]
+  },
+  "clothes": {
+    "english": ["shirt", "sweater", "jacket", "coat", "socks", "shoes", "trousers", "pajamas", "underwear", "hat", "skirt"],
+    "igbo": ["afe", "afe oyi", "jaketi", "koti", "soksi", "akpụkwụ", "traụza", "afeụla", "ọgọdọ", "okpu", "peteli"]
+  },
+  "colors": {
+    "english": ["red", "silver", "yellow", "green", "orange", "pink", "purple", "black", "gold", "white", "gray"],
+    "igbo": ["uhie", "olaocha", "edo", "anunu", "oroma", "uhie ocha", "ugo", "oji", "olaedo", "ocha", "ucha nzu"]
+  },
+  "directions": {
+    "english": ["can i help you?", "can you help me?", "where is the airport?", "go straight", "then", "turn left", "turn right"],
+    "igbo": ["m ga enyere gị aka", "ị ga enyere m aka", "kedụ, ebe ọdụ ụgbọelu nọ", "gaba n'iru", "emesie", "ba na aka-nri", "ba na aka-ekpe"]
+  },
+  "family": {
+    "english": ["mother", "sister", "grandfather", "brother", "father", "friend", "cousin", "grandmother", "uncle", "aunt"],
+    "igbo": ["nne", "nwanne", "nna nna", "nwanne", "nna", "enyi", "nwa nwanne", "nne nne", "nwanne mama", "nwanne mama m"]
+  },
+  "greetings": {
+    "english": ["how are you?", "welcome", "hello", "long time no see", "what is your name?", "where are you from", "nice to meet you", "my name is", "pleased to meet you", "goodbye"],
+    "igbo": ["kedu ka ị mere", "nnọọ", "kedụ", "anya ị", "kedu aha gị", "ebee ka i si", "ọ dị mma izute gị", "aha m bụ", "ọ dị m obi ụtọ izute gị", "ka omesia"]
+  },
+  "numbers": {
+    "english": ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
+    "igbo": ["adigi", "otu", "abụọ", "atọ", "anọ", "ise", "isii", "asaa", "asato", "eteghiete"]
+  },
+  "numbers 2": {
+    "english": ["ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"],
+    "igbo": ["iri", "iri abụọ", "iri atọ", "iri anọ", "iri ise", "iri isii", "iri asaa", "iri asato", "iri eteghiete"]
+  },
+  "numbers 3": {
+    "english": ["hundred", "two hundred", "three hundred", "four hundred", "five hundred", "six hundred", "seven hundred", "eight hundred", "nine hundred"],
+    "igbo": ["nnari", "nnari abụọ", "nnari atọ", "nnari anọ", "nnari ise", "nnari isii", "nnari asaa", "nnari asato", "nnari eteghiete"]
+  },
+  "phrases": {
+    "english": ["good luck", "have a nice meal", "do you speak igbo?", "have a good journey", "sorry", "please", "where is the bathroom?", "i love you", "help", "how much is this?", "congratulations"],
+    "igbo": ["ihe oma diri", "rie nke ọma", "ị na-asụ igbo", "ijeoma", "ndo", "biko", "ke ebe mkpochi di", "a hụrụ m gị n’anya", "nye aka", "ego ole ka ihe a di", "ekele"]
+  },
+  "professions": {
+    "english": ["policeman", "doctor", "teacher", "lawyer", "actor", "student", "chairman", "leader", "nurse", "janitor"],
+    "igbo": ["onye uweojii", "dọkịta", "onye nkụzi", "omee", "nwa akwukwo", "onyeisi oche", "onye ndu", "nọọsụ", "nza"]
+  },
+  "time": {
+    "english": ["what time is it?", "minutes", "hours", "seconds", "day", "week", "month", "year"],
+    "igbo": ["kedu ihe na-akụ", "nkeji", "awa", "sekọnd", "ụbọchị", "izu", "ọnwa", "afọ"]
+  },
+  "travel": {
+    "english": ["airport", "train", "car", "airplane", "hotel", "ticket", "luggage"],
+    "igbo": ["ọdụ ụgbọelu", "ụgbọ oloko", "ụgbọ ala", "ụgbọelu", "ụlọ oriri na ọghụghụ", "tiket", "ngwo ngwo/ibu"]
+  },
+  "general": {
+    "english": ["people", "water", "food", "sleep", "good morning", "good night", "thank you", "name", "time", "music", "money", "store"],
+    "igbo": ["ndị mmadụ", "mmiri", "nri", "ụra", "ụtụtụ ọma", "ka chifoo", "daalụ", "aha", "oge", "egwu", "ego", "ụlọ ahịa"]
+  }
+}

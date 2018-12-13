@@ -15,12 +15,12 @@ export default class Home extends Component {
     }, 600)
   }
 
-  majorOption = (title, description) => {
+  majorOption = (title, description, index) => {
     return (
       <Anime easing="easeOutElastic"
         duration={2700}
-        delay={(el, index) => index * 240}
-        translateY='-85vh'>
+        delay={() => index * 240}
+        translateY={['100vh', '4vh']}>
       <a href={`/${title.toLowerCase()}`}>
         <div id={title.toLowerCase()} className="major-option-container">
             <div>
@@ -38,12 +38,13 @@ export default class Home extends Component {
       return (
         <div className="home-container">
           <a href="/">
-            <h1 id="logo">Learn Igbo</h1>
+            <h1 id="logo">🌟Learn Igbo🇳🇬</h1>
           </a>
           <h5>An interactive web app to teach the Naija language</h5>
           <div className="major-options-container">
-            {this.majorOption('Camera', 'Interact with your camera and photos!')}
-            {this.majorOption('Speech', 'Say some words to get started!')}
+            {this.majorOption('Camera', 'Interact with your camera and photos!', 0)}
+            {this.majorOption('Speech', 'Say some words to get started!', .2)}
+            {this.majorOption('Games', 'Play some games to get interactive!', .3)}
           </div>
         </div>
       )

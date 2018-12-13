@@ -1,0 +1,51 @@
+.games-container {
+  color: rgb(34, 34, 34);
+  background-color: rgb(243, 147, 91);
+  padding-bottom: 5vh;
+  min-height: 100vh;
+  height: auto;
+}
+
+.game-level-options-container  a {
+  color: rgb(34, 34, 34);
+}
+
+.games-header {
+  padding: 0;
+  text-align: center;
+  color: #fff;
+  margin-top: 30px;
+}
+
+.games-header + h5 {
+  color: #fff;
+  margin-bottom: 70px;
+}
+
+.game-level-options-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 75vw;
+}
+
+.game-level-option-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 20vw;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 5vw;
+  box-shadow: 0px 3px 10px rgba(34, 44, 71, 0.4);
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.game-level-option-container:hover {
+  margin-top: -10px;
+  box-shadow: 0px 10px 10px rgba(34, 44, 71, 0.4);
+}

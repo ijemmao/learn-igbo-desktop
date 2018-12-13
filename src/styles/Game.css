@@ -1,0 +1,102 @@
+.game-container {
+  color: rgb(34, 34, 34);
+  background-color: rgb(243, 147, 91);
+  padding-bottom: 5vh;
+  min-height: 100vh;
+  height: auto;
+}
+
+#star {
+  position: absolute;
+}
+
+.game-container h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.game-question {
+  color: #fff;
+  padding: 0;
+}
+
+.game-options-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 75vw;
+}
+
+.game-container .igbo-option {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 25vw;
+  height: 16vw;
+  border-radius: 10px;
+  margin: 25px;
+  background-color: #fff;
+  box-shadow: 0px 3px 10px rgba(34, 44, 71, 0.4);
+  cursor: pointer;
+  user-select: none;
+  top: 0;
+  transition: all .2s;
+}
+
+.game-container .igbo-option:hover {
+  box-shadow: 0px 10px 10px rgba(34, 44, 71, 0.4);
+  top: -10px;
+}
+
+.congratulations-container {
+  color: #fff;
+}
+
+.congratulations-icons {
+  position: absolute;
+  width: 100%;
+  font-size: 9rem;
+  bottom: 20vh;
+}
+
+.post-game-text {
+  position: absolute;
+  color: #fff;
+  width: 100%;
+  bottom: 10vh;
+}
+
+.next-game-options-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.next-game-option-container {
+  font-family: 'Avenir', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 13vh;
+  width: 20vw;
+  background-color: #fff;
+  color: rgb(34, 34, 34);
+  border-radius: 10px;
+  margin: 0 5vw;
+  box-shadow: 0px 10px 10px rgba(34, 44, 71, 0.4);
+  bottom: -80vh;
+  opacity: 0;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.next-game-option-container:hover {
+  margin-top: -10px;
+}
