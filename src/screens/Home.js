@@ -20,7 +20,7 @@ export default class Home extends Component {
       <Anime easing="easeOutElastic"
         duration={2700}
         delay={() => index * 240}
-        translateY='-85vh'>
+        translateY={['100vh', '4vh']}>
       <a href={`/${title.toLowerCase()}`}>
         <div id={title.toLowerCase()} className="major-option-container">
             <div>

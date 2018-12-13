@@ -1,5 +1,5 @@
 {
-  "levels": ["alphabet", "body parts", "greetings", "animals", "clothes", "family", "professions", "places", "travel", "directions", "food", "time", "colors", "phrases", "general"],
+  "levels": ["alphabet", "body parts", "greetings", "animals", "clothes", "family", "numbers", "professions", "places", "travel", "directions", "food", "time", "colors", "phrases", "general"],
   "animals": {
     "english": ["dog", "lion", "cow", "goat", "bird", "monkey", "chicken", "elephant", "fish", "bug", "snake", "mouse"],
     "igbo": ["nkịta", "ọdụm", "ehi", "ewu", "nnunu", "enwe", "ọkụkọ", "enyí", "azụ", "ahụhụ", "agwọ", "òké"]

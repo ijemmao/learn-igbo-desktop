@@ -26,6 +26,10 @@ a {
   text-decoration: none;
 }
 
+.home-container a {
+  transform: translateY(100vh);
+}
+
 #camera {
   background-color: rgb(0, 190, 79);
 }
@@ -70,7 +74,6 @@ a {
   cursor: pointer;
   transition: all .2s;
   box-shadow: 0px 3px 10px rgba(34, 44, 71, 0.4);
-  top: 90vh;
 }
 
 .major-option-container:hover {
