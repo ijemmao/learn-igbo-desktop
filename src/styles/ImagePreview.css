@@ -105,6 +105,10 @@
     flex: 1 1 33%;
 }
 
+.no-suggestions-headers-container {
+  color: rgb(141, 141, 141)
+}
+
 .hidden {
   display: none;
 }

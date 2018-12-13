@@ -15,8 +15,8 @@ export default class ImagePreview extends Component {
     this.state = {
       analyzingPhoto: false,
       imgBase64: null,
-      english: ['this', 'is', 'a', 'word', 'another', 'something'],
-      igbo: ['sith', 'si', 'a', 'drow', 'rehtona', 'gnihtemos'],
+      english: [] || ['this', 'is', 'a', 'word', 'another', 'something'],
+      igbo: [] || ['sith', 'si', 'a', 'drow', 'rehtona', 'gnihtemos'],
     }
   }
 
@@ -27,6 +27,13 @@ export default class ImagePreview extends Component {
       return this.state.english.map((word, index) => {
         return <Suggestion key={`${word}${index}`} english={word} igbo={this.state.igbo[index]} />
       })
+    } else if (!this.state.analyzingPhoto &&  this.state.english.length === 0 && this.state.igbo.length === 0) {
+      return (
+        <span className="no-suggestions-headers-container">
+          <h3>There are currently no terms!</h3>
+          <h3>Upload a photo!</h3>
+        </span>
+      )
     }
   }
     
@@ -40,7 +47,7 @@ export default class ImagePreview extends Component {
         const imagePreview = document.querySelector('.image-preview img')
         imagePreview.setAttribute('src', e.target.result)
         this.setState({ imgBase64: e.target.result.split(',')[1] })
-        // this.sendImage(e.target.result.split(',')[1])
+        this.sendImage(e.target.result.split(',')[1])
       }
 
       reader.readAsDataURL(e.target.files[0])
