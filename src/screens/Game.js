@@ -10,7 +10,7 @@ import levelData from './../assets/data/quiz-levels.json'
 import starSound from './../assets/sounds/star.wav'
 import congratsSound from './../assets/sounds/achievement.mp3'
 
-var scrollTop;
+let scrollTop;
 window.addEventListener('scroll', (e) => {
   scrollTop = window.pageYOffset
 })
