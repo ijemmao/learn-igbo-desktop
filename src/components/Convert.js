@@ -5,7 +5,7 @@ import convertNumber from './../actions/convert-number'
 import starSound from './../assets/sounds/star.wav'
 import './../styles/Convert.css'
 
-let scrollTop;
+let scrollTop = 0;
 window.addEventListener('scroll', (e) => {
   scrollTop = window.pageYOffset
 })
