@@ -3,6 +3,7 @@ import anime from 'animejs'
 import Anime from 'react-anime'
 import Navbar from '../components/Navbar'
 import ProgressBar from '../components/ProgressBar'
+import Convert from './../components/Convert'
 import Music from '../components/Music'
 import './../styles/Game.css'
 import levelData from './../assets/data/quiz-levels.json'
@@ -24,8 +25,8 @@ export default class Game extends Component {
     super(props)
     this.state = {
       question: 0,
-      englishWords: levelData[`${this.props.match.params.level}`].english,
-      igboOptions: levelData[`${this.props.match.params.level}`].igbo,
+      englishWords: levelData[this.props.match.params.level] ? levelData[`${this.props.match.params.level}`].english : [],
+      igboOptions: levelData[this.props.match.params.level] ? levelData[`${this.props.match.params.level}`].igbo : [],
     }
   }
 
@@ -210,11 +211,23 @@ export default class Game extends Component {
     }
   }
 
+  renderGameType = () => {
+    if (this.props.match.params.level === 'convert') {
+      return <Convert />
+    } else {
+      return (
+        <span>
+          {this.renderState()}
+        </span>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="game-container">
         <Navbar />
-        {this.renderState()}
+        {this.renderGameType()}
       </div>
     )
   }
