@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import Navbar from './../components/Navbar'
+import Navbar from '../components/Navbar'
 import './../styles/UserLogin.css'
 
 export default class UserLogin extends Component {
+
   render() {
     return (
       <div className="user-login-container">
@@ -22,7 +23,7 @@ export default class UserLogin extends Component {
             </h3>
           </button>
         </form>
-        <h5>Don't have an account? <a href="#" className="user-login-option-link">Sign up</a></h5>
+        <h5>Don't have an account? <a href="/signup" className="user-login-option-link">Sign up</a></h5>
       </div>
     )
   }
