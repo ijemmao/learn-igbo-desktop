@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import UserAccount from './UserAccount'
 import './../styles/Navbar.css'
 
 export default class Navbar extends Component {
@@ -35,6 +36,8 @@ export default class Navbar extends Component {
               </a>
             </li>
           </ul>
+          <div style={{height: 30, width: 2, backgroundColor: 'white', 'margin-right': 30, 'border-radius': 2 }} />
+          <UserAccount />
         </span>
       </div>
     )
