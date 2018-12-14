@@ -15,19 +15,24 @@ export default class ImagePreview extends Component {
     this.state = {
       analyzingPhoto: false,
       imgBase64: null,
-      english: [] || ['this', 'is', 'a', 'word', 'another', 'something'],
-      igbo: [] || ['sith', 'si', 'a', 'drow', 'rehtona', 'gnihtemos'],
+      english: [],
+      igbo: [],
     }
   }
 
   renderSuggestions = () => {
     if (this.state.analyzingPhoto) {
-      return <ReactLoading className="loading" type={'spin'} color={'#ccc'} height={'10vh'} width={'10vh'} />
+      return (
+        <span className="react-loading-container">
+          <ReactLoading className="loading" type={'spin'} color={'#ccc'} height={'10vh'} width={'10vh'} />
+          <h3>Detecting Terms from photo</h3>
+        </span>
+      )
     } else if (!this.state.analyzingPhoto && this.state.english.length > 0 && this.state.igbo.length > 0) {
       return this.state.english.map((word, index) => {
         return <Suggestion key={`${word}${index}`} english={word} igbo={this.state.igbo[index]} />
       })
-    } else if (!this.state.analyzingPhoto &&  this.state.english.length === 0 && this.state.igbo.length === 0) {
+    } else if (!this.state.analyzingPhoto &&  this.state.english.length === 0) {
       return (
         <span className="no-suggestions-headers-container">
           <h3>There are currently no terms!</h3>
@@ -63,9 +68,9 @@ export default class ImagePreview extends Component {
       .then((res) => {
         const concepts = res.outputs[0].data.concepts;
         const suggestions = Array.from(new Set(concepts.map(concept => concept.name)))
-        this.setState({ analyzingPhoto: false, english: suggestions })
+        this.setState({ english: suggestions })
         translate.translateEnglish(suggestions).then((results) => {
-          this.setState({ igbo: results.words })
+          this.setState({ analyzingPhoto: false, igbo: results.words })
         })
       })
       .catch((error) => {

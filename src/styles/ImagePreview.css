@@ -109,6 +109,11 @@
   color: rgb(141, 141, 141)
 }
 
+.react-loading-container {
+  width: 10vw;
+  color: rgb(141, 141, 141)
+}
+
 .hidden {
   display: none;
 }
