@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 export default class Music extends Component {
   constructor(props) {
@@ -8,7 +8,6 @@ export default class Music extends Component {
     this.uri = props.uri
     this.audio = new Audio(this.uri)
     document.body.appendChild(this.audio)
-    console.log(this.audio)
   }
 
   togglePlay = () => {

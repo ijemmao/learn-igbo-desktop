@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import ReactLoading from 'react-loading'
 import Clarifai from 'clarifai'
 import Suggestion from './../components/Suggestion'
-import translate from './../actions/translate';
+import translate from './../actions/translate'
+import photo from './../actions/photo'
 import './../styles/ImagePreview.css'
 
 import env from './../env.json'
@@ -13,10 +14,20 @@ export default class ImagePreview extends Component {
     super(props)
 
     this.state = {
+      uid: this.props.uid || null,
       analyzingPhoto: false,
-      imgBase64: null,
-      english: [],
-      igbo: [],
+      imgBase64: this.props.image || null,
+      english: this.props.english || [],
+      igbo: this.props.igbo || [],
+    }
+  }
+
+  componentDidMount = () => {
+    if (this.props.image) {
+      document.querySelector('.choose-image-button').classList.add('hidden')
+      document.querySelector('.image-preview').classList.remove('hidden')
+      const imagePreview = document.querySelector('.image-preview img')
+      imagePreview.setAttribute('src', `data:image/jpeg;base64,${this.state.imgBase64}`)
     }
   }
 
@@ -51,6 +62,7 @@ export default class ImagePreview extends Component {
       reader.onload = (e) => {
         const imagePreview = document.querySelector('.image-preview img')
         imagePreview.setAttribute('src', e.target.result)
+        console.log(e.target.result.split(',')[0])
         this.setState({ imgBase64: e.target.result.split(',')[1] })
         this.sendImage(e.target.result.split(',')[1])
       }
@@ -71,6 +83,7 @@ export default class ImagePreview extends Component {
         this.setState({ english: suggestions })
         translate.translateEnglish(suggestions).then((results) => {
           this.setState({ analyzingPhoto: false, igbo: results.words })
+          this.props.uid ? photo.postPhotoResult(this.props.uid, { image, english: suggestions, igbo: results.words }) : console.log('did not push: user not logged in')
         })
       })
       .catch((error) => {
@@ -86,7 +99,7 @@ export default class ImagePreview extends Component {
   renderButtonOrImage = () => {
     return (
       <span>
-        <span>
+        <span className="choose-image-button">
           <input className="image-input" type="file" accept="image/png, image/jpeg" onChange={this.renderImage} />
           <button className="choose-image" onClick={this.clickInput}>Upload Photo</button>
         </span>
