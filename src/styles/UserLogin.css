@@ -1,0 +1,57 @@
+.user-login-container {
+  background: linear-gradient(#4294ff, #006eff);
+  min-height: 100vh;
+  height: fit-content;
+  padding-bottom: 5vh;
+}
+
+.user-login-header {
+  text-align: center;
+  margin-left: 0;
+}
+
+.user-login-form {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  margin: 0 auto;
+}
+
+.user-login-input {
+  font-family: 'Avenir', sans-serif;
+  background-color: transparent;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 3vh;
+  margin-bottom: 7vh;
+  outline: none;
+}
+
+.user-login-input::placeholder {
+  color: #fff;
+}
+
+.user-login-button {
+  position: relative;
+  height: 7vh;
+  width: 10vw;
+  border-radius: 10px;
+  border: none;
+  margin: 0 auto;
+  box-shadow: 0px 3px 10px rgba(34, 34, 34, .4);
+  top: 0;
+  transition: all .2s;
+}
+
+.user-login-button:hover {
+  box-shadow: 0px 10px 10px rgba(34, 34, 34, .4);
+  top: -10px;
+}
+
+.user-login-button * {
+  color: rgb(51, 51, 51);
+  margin: 0;
+}
