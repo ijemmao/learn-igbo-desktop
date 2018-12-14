@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import user from './../actions/user'
 import './../styles/UserAccount.css'
-import { RSA_NO_PADDING } from 'constants';
 
 export default class UserAccount extends Component {
   constructor(props) {
@@ -10,7 +9,8 @@ export default class UserAccount extends Component {
       name: '',
       email: '',
       photo: '',
-      uid: ''
+      uid: '',
+      expanded: false
     }
   }
 
@@ -29,12 +29,29 @@ export default class UserAccount extends Component {
     user.createGoogleUser()
   }
 
+  toggleMenu = () => {
+    const dropdownMenu = document.querySelector('.dropdown-menu')
+    if (!this.state.expanded) {
+      dropdownMenu.classList.remove('hidden')
+    } else {
+      dropdownMenu.classList.add('hidden')
+    }
+
+    this.setState({ expanded: !this.state.expanded })
+  }
+
   renderUserAccount = () => {
     if (this.state.uid !== '') {
       return (
-        <span className="user-profile-container">
+        <span className="user-profile-container" onClick={this.toggleMenu}>
           <img className="user-profile-image" src={this.state.photo} />
           <h5>{this.state.name}</h5>
+          <div className="dropdown-menu hidden">
+            <h5>{this.state.email}</h5>
+            <button className="login-button logout">
+              Sign Out
+            </button>
+          </div>
         </span>
       )
     } else {

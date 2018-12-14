@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Anime from 'react-anime'
+import Navbar from './../components/Navbar'
 import './../styles/Home.css'
 
 export default class Home extends Component {
@@ -37,6 +38,7 @@ export default class Home extends Component {
     if (this.state.renderPage) {
       return (
         <div className="home-container">
+          <Navbar />
           <a href="/">
             <h1 id="logo">🌟Learn Igbo🇳🇬</h1>
           </a>
