@@ -21,7 +21,6 @@ export default class Camera extends Component {
   }
 
   renderImagePreviews = () => {
-    console.log('ok', this.state.imagePreviews)
     return this.state.imagePreviews
   }
 

@@ -1,0 +1,58 @@
+.login-button {
+  font-family: 'Varela Round', 'Avenir', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+.sign-up {
+  background-color: rgb(0, 80, 201);
+}
+
+.sign-up:hover {
+  background-color: rgb(42, 124, 248);
+}
+
+.logout {
+  background-color: rgb(201, 64, 0);
+}
+
+.user-profile-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-profile-image {
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  margin-right: 30px
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100px;
+  min-width: 15vw;
+  width: fit-content;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 0 20px;
+  top: 100px;
+  right: 0px;
+  cursor: auto;
+}
+
+.dropdown-menu h5 {
+  color: rgb(34, 34, 34);
+  margin: 0;
+  margin-bottom: 10px;
+}
