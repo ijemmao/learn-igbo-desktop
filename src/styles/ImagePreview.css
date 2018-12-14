@@ -25,14 +25,15 @@
   align-self: center;
   height: 230px;
   width: 200px;
-  border: 5px dashed #fffffff1;
+  border: 5px dashed #3f3f3ff1;
   font-size: 22px;
   border-radius: 5px;
   background: transparent;
-  margin-bottom: 3vw;
-  color: white;
+  margin: 5vh 15vw;
+  color: #3f3f3f;
   font-weight: bold;
   cursor: pointer;
+  transition: all .2s;
 }
 
 .choose-image:before {
@@ -40,6 +41,11 @@
   width: 50px;
   height: 50px;
   margin: 0 auto;
+}
+
+.choose-image:hover {
+  box-shadow: 0px 10px 10px rgba(34, 44, 71, 0.4);
+  margin-top: 4vh;
 }
 
 .image-results-container {
@@ -97,4 +103,17 @@
 
  .suggestions-labels-container>* {
     flex: 1 1 33%;
+}
+
+.no-suggestions-headers-container {
+  color: rgb(141, 141, 141)
+}
+
+.react-loading-container {
+  width: 10vw;
+  color: rgb(141, 141, 141)
+}
+
+.hidden {
+  display: none;
 }

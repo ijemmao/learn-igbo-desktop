@@ -15,25 +15,38 @@ export default class ImagePreview extends Component {
     this.state = {
       analyzingPhoto: false,
       imgBase64: null,
-      english: ['this', 'is', 'a', 'word', 'another', 'something'],
-      igbo: ['sith', 'si', 'a', 'drow', 'rehtona', 'gnihtemos'],
+      english: [],
+      igbo: [],
     }
   }
 
   renderSuggestions = () => {
     if (this.state.analyzingPhoto) {
-      return <ReactLoading className="loading" type={'spin'} color={'#ccc'} height={'10vh'} width={'10vh'} />
+      return (
+        <span className="react-loading-container">
+          <ReactLoading className="loading" type={'spin'} color={'#ccc'} height={'10vh'} width={'10vh'} />
+          <h3>Detecting Terms from photo</h3>
+        </span>
+      )
     } else if (!this.state.analyzingPhoto && this.state.english.length > 0 && this.state.igbo.length > 0) {
       return this.state.english.map((word, index) => {
         return <Suggestion key={`${word}${index}`} english={word} igbo={this.state.igbo[index]} />
       })
+    } else if (!this.state.analyzingPhoto &&  this.state.english.length === 0) {
+      return (
+        <span className="no-suggestions-headers-container">
+          <h3>There are currently no terms!</h3>
+          <h3>Upload a photo!</h3>
+        </span>
+      )
     }
   }
     
   renderImage = (e) => {
-    console.log(e.target.files);
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
+      e.target.nextSibling.classList.add('hidden')
+      document.querySelector('.image-preview').classList.remove('hidden')
 
       reader.onload = (e) => {
         const imagePreview = document.querySelector('.image-preview img')
@@ -55,9 +68,9 @@ export default class ImagePreview extends Component {
       .then((res) => {
         const concepts = res.outputs[0].data.concepts;
         const suggestions = Array.from(new Set(concepts.map(concept => concept.name)))
-        this.setState({ analyzingPhoto: false, english: suggestions })
+        this.setState({ english: suggestions })
         translate.translateEnglish(suggestions).then((results) => {
-          this.setState({ igbo: results.words })
+          this.setState({ analyzingPhoto: false, igbo: results.words })
         })
       })
       .catch((error) => {
@@ -70,20 +83,30 @@ export default class ImagePreview extends Component {
     imageInput.click();
   }
 
+  renderButtonOrImage = () => {
+    return (
+      <span>
+        <span>
+          <input className="image-input" type="file" accept="image/png, image/jpeg" onChange={this.renderImage} />
+          <button className="choose-image" onClick={this.clickInput}>Upload Photo</button>
+        </span>
+        <div className="image-preview hidden">
+          <img src="/" />
+        </div>
+      </span>
+    )
+  }
+
   render() {
     return (
       <div className="image-preview-container">
-        <input className="image-input" type="file" accept="image/png, image/jpeg" onChange={this.renderImage}/>
-        <button className="choose-image" onClick={this.clickInput}>Upload Photo</button>
         <div className="image-results-container">
           <div className="image-results-headers-container">
             <h3 className="image-result-header">Uploaded Photo</h3>
             <h3 className="image-result-header">Detected Terms</h3>
           </div>
           <div className="image-results-content-container">
-            <div className="image-preview">
-              <img src="/" />
-            </div>
+            {this.renderButtonOrImage()}
             <div className="suggestions-container">
               <div className="suggestions-labels-container">
                 {this.renderSuggestions()}

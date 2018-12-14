@@ -72,7 +72,7 @@ export default class Game extends Component {
   }
 
   getEnglishCorresponding = (answer, childTarget) => {
-    return this.state.englishWords.indexOf(answer) == this.state.igboOptions.indexOf(childTarget.innerText)
+    return this.state.englishWords.indexOf(answer) === this.state.igboOptions.indexOf(childTarget.innerText)
   }
 
   checkAnswer = (e, answer) => {

@@ -2,7 +2,30 @@
    background: linear-gradient(#2EC25C, #059B22);
    min-height: 100vh;
    height: auto;
-} 
+}
+
+.add-image-preview {
+  position: relative;
+  height: 12vh;
+  width: 23vw;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 5vh;
+  padding: 0 20px;
+  box-shadow: 0px 3px 10px rgba(34, 44, 71, 0.4);  
+  top: 0;
+  transition: all .2s;
+}
+
+.add-image-preview:hover {
+  box-shadow: 0px 10px 10px rgba(34, 44, 71, 0.4);  
+  top: -10px;
+}
+
+.add-image-preview h2 {
+  margin: 0;
+  text-align: center;
+}
 
 .image-input {
   display: none;
