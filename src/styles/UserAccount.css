@@ -16,3 +16,16 @@
 .sign-up:hover {
   background-color: rgb(42, 124, 248);
 }
+
+.user-profile-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-profile-image {
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  margin-right: 30px
+}

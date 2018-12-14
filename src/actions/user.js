@@ -21,4 +21,16 @@ const createGoogleUser = () => {
   });
 }
 
-export default { createGoogleUser }
+const getGoogleUser = () => {
+  return new Promise((resolve, reject) => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        resolve(user)
+      } else {
+        resolve({ displayName: '', email: '', photoURL: '', uri: ''})
+      }
+    });
+  })
+}
+
+export default { createGoogleUser, getGoogleUser }
