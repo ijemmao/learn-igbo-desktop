@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
-import './../styles/UserLogin.css'
+import google from './../assets/images/google.png'
+import './../styles/Login.css'
 
 export default class UserLogin extends Component {
 
@@ -17,11 +18,19 @@ export default class UserLogin extends Component {
         <form className="user-login-form">
           <input className="user-login-input" placeholder="username" type="text" />
           <input className="user-login-input" placeholder="password" type="password" />
-          <button className="user-login-button">
-            <h3>
-              sign in
-            </h3>
-          </button>
+          <div className="login-buttons-container">
+            <button className="user-login-button">
+              <h3>
+                sign in
+              </h3>
+            </button>
+            <button className="user-login-button">
+              <img className="google-icon" src={google} />
+              <h3>
+                sign in with google
+              </h3>
+            </button>
+          </div>
         </form>
         <h5>Don't have an account? <a href="/signup" className="user-login-option-link">Sign up</a></h5>
       </div>

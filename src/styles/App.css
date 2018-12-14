@@ -42,6 +42,10 @@ button {
   cursor: pointer;
 }
 
+.google-icon {
+  width: 40px;
+}
+
 .loading {
   margin: 0 auto;
   padding-bottom: 20px;
