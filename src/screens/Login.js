@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
+import user from './../actions/user'
 import google from './../assets/images/google.png'
 import './../styles/Login.css'
 
@@ -15,7 +16,7 @@ export default class UserLogin extends Component {
           </a>
         </h1>
         <h2 className="user-login-header">Sign In</h2>
-        <form className="user-login-form">
+        <div className="user-login-form">
           <input className="user-login-input" placeholder="username" type="text" />
           <input className="user-login-input" placeholder="password" type="password" />
           <div className="login-buttons-container">
@@ -24,14 +25,14 @@ export default class UserLogin extends Component {
                 sign in
               </h3>
             </button>
-            <button className="user-login-button">
+            <button className="user-login-button" onClick={user.createGoogleUser}>
               <img className="google-icon" src={google} />
               <h3>
                 sign in with google
               </h3>
             </button>
           </div>
-        </form>
+        </div>
         <h5>Don't have an account? <a href="/signup" className="user-login-option-link">Sign up</a></h5>
       </div>
     )

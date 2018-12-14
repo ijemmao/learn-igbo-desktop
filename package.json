@@ -14,6 +14,8 @@
     "animejs": "^2.2.0",
     "axios": "^0.18.0",
     "clarifai": "^2.9.0",
+    "firebase": "^5.7.0",
+    "firebase-admin": "^6.4.0",
     "react": "^16.6.3",
     "react-anime": "^2.2.0",
     "react-dom": "^16.6.3",
