@@ -1,0 +1,17 @@
+.login-button {
+  font-family: 'Varela Ronud', 'Avenir', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.sign-up {
+  background-color: rgb(0, 80, 201);
+}
+
+.sign-up:hover {
+  background-color: rgb(42, 124, 248);
+}
