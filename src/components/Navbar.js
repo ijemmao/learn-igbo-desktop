@@ -36,7 +36,7 @@ export default class Navbar extends Component {
               </a>
             </li>
           </ul>
-          <div style={{height: 30, width: 2, backgroundColor: 'white', 'margin-right': 30, 'border-radius': 2 }} />
+          <div style={{height: 30, width: 2, backgroundColor: 'white', marginRight: 30, borderRadius: 2 }} />
           <UserAccount />
         </span>
       </div>

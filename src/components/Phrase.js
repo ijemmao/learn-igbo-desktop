@@ -7,27 +7,19 @@ export default class Phrase extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      igboWords: ['words', 'are', 'last', 'time'],
-      igboSentence: '',
-      englishWords: this.props.englishPhrase.split(' '),
-      englishSentence: this.props.englishSentence,
+      igboWords: this.props.igboWords || [],
+      igboSentence: this.props.igboPhrase || '',
+      englishWords: this.props.englishPhrase.split(' ') || [],
+      englishSentence: this.props.englishSentence || '',
       expanded: false,
     }
   }
 
-  componentWillMount = () => {
-    // translate.translateEnglish(this.props.englishPhrase).then((res) => {
-    //   this.setState({ igboSentence: res.sentence, igboWords: res.words });
-    // })
-  }
-
   enterHover = (e) => {
     const prevNode = e.target.childNodes[2]
-    console.log(e.target.childNodes);
     prevNode.classList.remove('invisible')
     const prevWidth = prevNode.getBoundingClientRect().width
     const { x, y, width } = e.target.getBoundingClientRect()
-    console.log(x, y, width)
     prevNode.style.left = `${x + (width  - prevWidth) / 2}px`
   }
 
@@ -36,7 +28,6 @@ export default class Phrase extends Component {
     if (e.target.childNodes.length === 1) {
       prevNode = e.target;
     }
-    console.log(e.target.childNodes)
     prevNode.classList.add('invisible')
   }
 
@@ -61,16 +52,14 @@ export default class Phrase extends Component {
   }
   
   renderIgbo = () => {
-    if (this.state.igboWords.length > 0) {
-      return (
-        <span>
-          <h3 className="language-header">Igbo</h3>
-          <h4 className="phrase">
-            {this.state.igboWords.join(' ')}
-          </h4>
-        </span>
-      )
-    } else return <ReactLoading className="loading" type={'spin'} color={'#ccc'} height={'10vh'} width={'10vh'} />
+    return (
+      <span>
+        <h3 className="language-header">Igbo</h3>
+        <h4 className="phrase">
+          {this.state.igboSentence}
+        </h4>
+      </span>
+    )
   }
 
   render() {
