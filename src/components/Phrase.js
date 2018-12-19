@@ -7,18 +7,12 @@ export default class Phrase extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      igboWords: ['words', 'are', 'last', 'time'],
-      igboSentence: '',
-      englishWords: this.props.englishPhrase.split(' '),
-      englishSentence: this.props.englishSentence,
+      igboWords: this.props.igboPhrase.split(' ') || [],
+      igboSentence: this.props.igboPhrase || '',
+      englishWords: this.props.englishPhrase.split(' ') || [],
+      englishSentence: this.props.englishSentence || '',
       expanded: false,
     }
-  }
-
-  componentWillMount = () => {
-    // translate.translateEnglish(this.props.englishPhrase).then((res) => {
-    //   this.setState({ igboSentence: res.sentence, igboWords: res.words });
-    // })
   }
 
   enterHover = (e) => {

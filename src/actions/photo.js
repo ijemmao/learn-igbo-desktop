@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-const database = firebase.database();
+const database = firebase.database()
 
 const postPhotoResult = (uid, data) => {
   const postKey = database.ref().child(`${uid}/photos`).push().key

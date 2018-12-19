@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import SpeechToText from 'speech-to-text'
 import Navbar from './../components/Navbar'
 import Phrase from './../components/Phrase'
+import user from './../actions/user'
+import speech from './../actions/speech'
+import translate  from './../actions/translate'
 import './../styles/Speech.css'
 
 export default class Speech extends Component {
@@ -11,9 +14,37 @@ export default class Speech extends Component {
     this.state = {
       interimText: '',
       finalizedText: [],
+      englishPhrases: [],
+      igboPhrases: [],
       listening: false,
       listeningText: 'Start Listening',
+      uid: null,
     }
+  }
+
+  componentWillMount = () => {
+    user.getGoogleUser().then((res) => {
+      if (res !== null) {
+        this.setState({ uid: res.uid })
+      }
+      speech.getSpeechResults(res.uid).then((res2) => {
+        if (res2 !== null) {
+
+          const pulledEnglish = []
+          const pulledIgbo = []
+
+          for (let key in res2) {
+            const speechData = res2[key]
+            pulledEnglish.push(speechData.english)
+            pulledIgbo.push(speechData.igbo)
+          }
+          this.setState({
+            englishPhrases: pulledEnglish,
+            igboPhrases: pulledIgbo
+          })
+        }
+      })
+    })
   }
 
   componentDidMount() {
@@ -29,9 +60,17 @@ export default class Speech extends Component {
     }
 
     const onFinalized = (text) => {
-      this.setState({
-        finalizedText: [text, ...this.state.finalizedText],
-        interimText: ''
+      translate.translateEnglish(text).then((res) => {
+        // this.setState({ igboSentence: res.sentence, igboWords: res.words });
+        console.log('okokokokok')
+        this.setState({
+          finalizedText: [text, ...this.state.finalizedText],
+          englishPhrases: [text, ...this.state.englishPhrases],
+          igboPhrases: [res.sentence, ...this.state.igboPhrases],
+          interimText: ''
+        })
+
+        speech.postSpeechResult(this.state.uid, { english: text, igbo: res.sentence })
       })
     }
 
@@ -68,11 +107,9 @@ export default class Speech extends Component {
   }
 
   renderPhrases = () => {
-    // if (this.state.finalizedText.length > 0) {
-    if (true) {
-      // return this.state.finalizedText.map((phrase, index) => {
-      return ['this is something to render', 'something else to render', 'one more time for the people in the back'].map((phrase, index) => {
-        return <Phrase englishPhrase={phrase} key={`${index}-${phrase}`} />
+    if (this.state.englishPhrases.length > 0) {
+        return this.state.englishPhrases.map((phrase, index) => {
+        return <Phrase englishPhrase={phrase} igboPhrase={this.state.igboPhrases[index]} key={`${index}-${phrase}`} />
       })
     } else {
       return (
