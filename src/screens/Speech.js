@@ -16,6 +16,7 @@ export default class Speech extends Component {
       finalizedText: [],
       englishPhrases: [],
       igboPhrases: [],
+      igboWords: [],
       listening: false,
       listeningText: 'Start Listening',
       uid: null,
@@ -32,15 +33,18 @@ export default class Speech extends Component {
 
           const pulledEnglish = []
           const pulledIgbo = []
+          const pulledIgboWords = []
 
           for (let key in res2) {
             const speechData = res2[key]
             pulledEnglish.push(speechData.english)
             pulledIgbo.push(speechData.igbo)
+            pulledIgboWords.push(speechData.igboWords)
           }
           this.setState({
             englishPhrases: pulledEnglish,
-            igboPhrases: pulledIgbo
+            igboPhrases: pulledIgbo,
+            igboWords: pulledIgboWords
           })
         }
       })
@@ -61,16 +65,14 @@ export default class Speech extends Component {
 
     const onFinalized = (text) => {
       translate.translateEnglish(text).then((res) => {
-        // this.setState({ igboSentence: res.sentence, igboWords: res.words });
-        console.log('okokokokok')
         this.setState({
           finalizedText: [text, ...this.state.finalizedText],
           englishPhrases: [text, ...this.state.englishPhrases],
           igboPhrases: [res.sentence, ...this.state.igboPhrases],
+          igboWords: [res.words, this.state.igboWords],
           interimText: ''
         })
-
-        speech.postSpeechResult(this.state.uid, { english: text, igbo: res.sentence })
+        speech.postSpeechResult(this.state.uid, { english: text, igbo: res.sentence, igboWords: res.words })
       })
     }
 
@@ -109,7 +111,7 @@ export default class Speech extends Component {
   renderPhrases = () => {
     if (this.state.englishPhrases.length > 0) {
         return this.state.englishPhrases.map((phrase, index) => {
-        return <Phrase englishPhrase={phrase} igboPhrase={this.state.igboPhrases[index]} key={`${index}-${phrase}`} />
+        return <Phrase englishPhrase={phrase} igboPhrase={this.state.igboPhrases[index]} igboWords={this.state.igboWords[index]} key={`${index}-${phrase}`} />
       })
     } else {
       return (

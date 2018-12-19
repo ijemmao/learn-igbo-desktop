@@ -46,7 +46,6 @@ export default class Game extends Component {
       starElement.innerText = '🌟'
       starElement.style.left = `${star[0] - 30}px`
       starElement.style.top = `${star[1] + scrollTop }px`
-      console.log(star)
       document.body.appendChild(starElement)
     })
 
