@@ -3,12 +3,12 @@ import anime from 'animejs'
 import Anime from 'react-anime'
 import Navbar from '../components/Navbar'
 import ProgressBar from '../components/ProgressBar'
-import Convert from './../components/Convert'
+import Convert from '../components/Convert'
 import Music from '../components/Music'
-import './../styles/Game.css'
-import levelData from './../assets/data/quiz-levels.json'
-import starSound from './../assets/sounds/star.wav'
-import congratsSound from './../assets/sounds/achievement.mp3'
+import '../styles/Game.css'
+import levelData from '../assets/data/quiz-levels.json'
+import starSound from '../assets/sounds/star.wav'
+import congratsSound from '../assets/sounds/achievement.mp3'
 
 let scrollTop = 0;
 window.addEventListener('scroll', (e) => {
@@ -20,7 +20,6 @@ const congrats = new Music({ uri: congratsSound })
 
 
 export default class Game extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -60,8 +59,7 @@ export default class Game extends Component {
         easing: 'easeOutQuad',
         complete: () => document.querySelector(`.${star[2]}`) ? document.querySelector(`.${star[2]}`).remove() : console.log('no star')
       });
-    })
-    
+    }) 
   }
 
   nextQuestion = () => {
@@ -75,7 +73,7 @@ export default class Game extends Component {
   }
 
   checkAnswer = (e, answer) => {
-    let target = e.target;
+    let { target } = e;
     let childTarget;
     if (e.target.nodeName !== 'DIV') {
       target = e.target.parentNode
@@ -107,7 +105,6 @@ export default class Game extends Component {
         });
       }
     }
-
   }
 
   random = () => {
@@ -141,7 +138,7 @@ export default class Game extends Component {
     const correctAnswer = this.state.question;
     const options = new Set([correctAnswer]);
     while (options.size < 4) {
-      let randomNumber = this.random();
+      const randomNumber = this.random();
       if (randomNumber !== correctAnswer && !options.has(randomNumber)) {
         options.add(randomNumber);
       }
@@ -158,11 +155,13 @@ export default class Game extends Component {
 
   renderCongrats = () => {
     return (
-      <Anime easing="easeOutElastic"
+      <Anime
+        easing="easeOutElastic"
         duration={1700}
         delay={(el, index) => index * 240}
-        translateY='-30vh'>
-        <h1 className="congratulations-icons">✨🏆✨</h1>
+        translateY="-30vh"
+      >
+        <h1 className="congratulations-icons"><span role="img" aria-label="trophy">✨🏆✨</span></h1>
         <h2 className="post-game-text">You successfully completed this level</h2>
       </Anime>
     )
@@ -170,12 +169,14 @@ export default class Game extends Component {
 
   renderNextGameOptions = (optionText, delay, callback) => {
     return (
-      <Anime easing="easeOutElastic"
+      <Anime
+        easing="easeOutElastic"
         duration={2000}
         delay={(el, index) => delay}
-        translateY='-30vh'
-        opacity='1'>
-        <div className="next-game-option-container" onClick={callback}>
+        translateY="-30vh"
+        opacity="1"
+      >
+        <div className="next-game-option-container" onClick={callback} role="button">
           <h3>
             {optionText}
           </h3>
