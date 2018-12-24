@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Navbar from './../components/Navbar'
-import ImagePreview from './../components/ImagePreview'
-import user from './../actions/user'
-import photo from './../actions/photo'
+import Navbar from '../components/Navbar'
+import ImagePreview from '../components/ImagePreview'
+import user from '../actions/user'
+import photo from '../actions/photo'
 import './../styles/Camera.css'
 
 export default class Camera extends Component {

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import ReactLoading from 'react-loading'
-import translate from './../actions/translate'
-import './../styles/Phrase.css'
+import '../styles/Phrase.css'
 
 export default class Phrase extends Component {
   constructor(props) {
@@ -11,7 +9,6 @@ export default class Phrase extends Component {
       igboSentence: this.props.igboPhrase || '',
       englishWords: this.props.englishPhrase.split(' ') || [],
       englishSentence: this.props.englishSentence || '',
-      expanded: false,
     }
   }
 
@@ -19,8 +16,8 @@ export default class Phrase extends Component {
     const prevNode = e.target.childNodes[2]
     prevNode.classList.remove('invisible')
     const prevWidth = prevNode.getBoundingClientRect().width
-    const { x, y, width } = e.target.getBoundingClientRect()
-    prevNode.style.left = `${x + (width  - prevWidth) / 2}px`
+    const { x, width } = e.target.getBoundingClientRect()
+    prevNode.style.left = `${x + (width - prevWidth) / 2}px`
   }
 
   leaveHover = (e) => {

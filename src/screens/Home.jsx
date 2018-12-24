@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Anime from 'react-anime'
-import Navbar from './../components/Navbar'
+import Navbar from '../components/Navbar'
 import './../styles/Home.css'
 
 export default class Home extends Component {

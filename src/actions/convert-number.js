@@ -1,4 +1,4 @@
-import numbers from './../assets/data/numbers.json'
+import numbers from '../assets/data/numbers.json'
 
 const convertNumber = (number) => {
   if (number < 10) {
@@ -8,7 +8,7 @@ const convertNumber = (number) => {
   const numberString = `${number}`
   let finalNumber = ''
 
-  for (let i = numberString.length - 1; i >= 0; i--) {
+  for (let i = numberString.length - 1; i >= 0; i -= 1) {
     const digit = numberString[i]
     const tens = numberString.length - i - 1
 

@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import ReactLoading from 'react-loading'
 import Clarifai from 'clarifai'
-import Suggestion from './../components/Suggestion'
-import translate from './../actions/translate'
-import photo from './../actions/photo'
-import './../styles/ImagePreview.css'
+import Suggestion from './Suggestion'
+import translate from '../actions/translate'
+import photo from '../actions/photo'
+import env from '../env.json'
+import '../styles/ImagePreview.css'
 
-import env from './../env.json'
+const app = new Clarifai.App({
+  apiKey: env.CLARIFAI,
+});
 
 export default class ImagePreview extends Component {
-  
   constructor(props) {
     super(props)
 
@@ -74,7 +76,7 @@ export default class ImagePreview extends Component {
   sendImage = (image) => {
     this.setState({ analyzingPhoto: true })
     app.models.initModel({ id: Clarifai.GENERAL_MODEL, version: 'aa7f35c01e0642fda5cf400f543e7c40' })
-      .then(generalModel => {
+      .then((generalModel) => {
         return generalModel.predict(image)
       })
       .then((res) => {
@@ -131,7 +133,3 @@ export default class ImagePreview extends Component {
     )
   }
 }
-
-const app = new Clarifai.App({
-  apiKey: env.CLARIFAI
-});

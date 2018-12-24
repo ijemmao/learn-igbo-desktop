@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import user from './../actions/user'
-import './../styles/UserAccount.css'
+import user from '../actions/user'
+import '../styles/UserAccount.css'
 
 export default class UserAccount extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class UserAccount extends Component {
       email: null,
       photo: null,
       uid: null,
-      expanded: false
+      expanded: false,
     }
   }
 
@@ -21,7 +21,7 @@ export default class UserAccount extends Component {
           name: res.displayName,
           email: res.email,
           photo: res.photoURL,
-          uid: res.uid
+          uid: res.uid,
         })
       }
     })
@@ -34,7 +34,7 @@ export default class UserAccount extends Component {
           name: res.displayName,
           email: res.email,
           photo: res.photoURL,
-          uid: res.uid
+          uid: res.uid,
         })
       }
     })
@@ -52,7 +52,7 @@ export default class UserAccount extends Component {
   }
 
   signout = () => {
-    user.signOutGoogleUser().then((res) => {
+    user.signOutGoogleUser().then(() => {
       this.setState({
         name: null,
         email: null,
@@ -85,7 +85,7 @@ export default class UserAccount extends Component {
       )
     }
   }
-  
+
   render() {
     return (
       <div className="user-account-container">

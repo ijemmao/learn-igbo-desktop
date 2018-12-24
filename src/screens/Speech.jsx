@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import SpeechToText from 'speech-to-text'
-import Navbar from './../components/Navbar'
-import Phrase from './../components/Phrase'
-import user from './../actions/user'
-import speech from './../actions/speech'
-import translate  from './../actions/translate'
-import './../styles/Speech.css'
+import Navbar from '../components/Navbar'
+import Phrase from '../components/Phrase'
+import user from '../actions/user'
+import speech from '../actions/speech'
+import translate from '../actions/translate'
+import '../styles/Speech.css'
 
 export default class Speech extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -52,9 +51,8 @@ export default class Speech extends Component {
   }
 
   componentDidMount() {
-    const onAnythingSaid = text => {
+    const onAnythingSaid = (text) => {
       this.setState({ interimText: text })
-
     }
 
     const onEndEvent = () => {
@@ -70,7 +68,7 @@ export default class Speech extends Component {
           englishPhrases: [text, ...this.state.englishPhrases],
           igboPhrases: [res.sentence, ...this.state.igboPhrases],
           igboWords: [res.words, this.state.igboWords],
-          interimText: ''
+          interimText: '',
         })
         speech.postSpeechResult(this.state.uid, { english: text, igbo: res.sentence, igboWords: res.words })
       })
@@ -105,7 +103,7 @@ export default class Speech extends Component {
           <h3 className="interim-text">{this.state.interimText}</h3>
         </div>
       )
-    } else return null
+    } return null
   }
 
   renderPhrases = () => {
@@ -113,11 +111,10 @@ export default class Speech extends Component {
         return this.state.englishPhrases.map((phrase, index) => {
         return <Phrase englishPhrase={phrase} igboPhrase={this.state.igboPhrases[index]} igboWords={this.state.igboWords[index]} key={`${index}-${phrase}`} />
       })
-    } else {
-      return (
-        <h4 className="empty-section-header">No phrases recorded</h4>
-      )
     }
+    return (
+      <h4 className="empty-section-header">No phrases recorded</h4>
+    )
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import anime from 'animejs'
-import Music from '../components/Music'
-import convertNumber from './../actions/convert-number'
+import Music from './Music'
+import convertNumber from '../actions/convert-number'
 import starSound from './../assets/sounds/star.wav'
 import './../styles/Convert.css'
 
