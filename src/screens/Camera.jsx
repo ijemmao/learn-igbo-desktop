@@ -3,10 +3,9 @@ import Navbar from '../components/Navbar'
 import ImagePreview from '../components/ImagePreview'
 import user from '../actions/user'
 import photo from '../actions/photo'
-import './../styles/Camera.css'
+import '../styles/Camera.css'
 
 export default class Camera extends Component {
-  
   constructor(props) {
     super(props)
 
@@ -25,9 +24,17 @@ export default class Camera extends Component {
       photo.getPhotoResults(res.uid).then((res2) => {
         const pulledImagePreviews = []
 
-        for (let key in res2) {
+        for (const key in res2) {
           const previewData = res2[key]
-          pulledImagePreviews.push(<ImagePreview key={key} uid={this.state.uid} english={previewData.english} igbo={previewData.igbo} image={previewData.image} />)
+          pulledImagePreviews.push(
+            <ImagePreview
+              key={key}
+              uid={this.state.uid}
+              english={previewData.english}
+              igbo={previewData.igbo}
+              image={previewData.image}
+            />,
+          )
         }
         this.setState({ imagePreviewsData: res2, imagePreviews: pulledImagePreviews })
       })
@@ -48,7 +55,7 @@ export default class Camera extends Component {
   handleNewImages = () => {
     return (
       <span>
-        <button className="add-image-preview" onClick={this.createNewImagePreview}>
+        <button className="add-image-preview" onClick={this.createNewImagePreview} type="button">
           <h2>
             add a new photo card
           </h2>

@@ -29,12 +29,11 @@ export default class Speech extends Component {
       }
       speech.getSpeechResults(res.uid).then((res2) => {
         if (res2 !== null) {
-
           const pulledEnglish = []
           const pulledIgbo = []
           const pulledIgboWords = []
 
-          for (let key in res2) {
+          for (const key in res2) {
             const speechData = res2[key]
             pulledEnglish.push(speechData.english)
             pulledIgbo.push(speechData.igbo)
@@ -43,7 +42,7 @@ export default class Speech extends Component {
           this.setState({
             englishPhrases: pulledEnglish,
             igboPhrases: pulledIgbo,
-            igboWords: pulledIgboWords
+            igboWords: pulledIgboWords,
           })
         }
       })
@@ -70,7 +69,12 @@ export default class Speech extends Component {
           igboWords: [res.words, this.state.igboWords],
           interimText: '',
         })
-        speech.postSpeechResult(this.state.uid, { english: text, igbo: res.sentence, igboWords: res.words })
+        speech.postSpeechResult(this.state.uid,
+          {
+            english: text,
+            igbo: res.sentence,
+            igboWords: res.words,
+          })
       })
     }
 
@@ -108,7 +112,7 @@ export default class Speech extends Component {
 
   renderPhrases = () => {
     if (this.state.englishPhrases.length > 0) {
-        return this.state.englishPhrases.map((phrase, index) => {
+      return this.state.englishPhrases.map((phrase, index) => {
         return <Phrase englishPhrase={phrase} igboPhrase={this.state.igboPhrases[index]} igboWords={this.state.igboWords[index]} key={`${index}-${phrase}`} />
       })
     }
@@ -123,10 +127,10 @@ export default class Speech extends Component {
         <Navbar />
         <h1>Record Your Voice</h1>
         <h5>Start recording your voice and see the translation</h5>
-        <button className="recording-button" onClick={this.startListening}>
+        <button className="recording-button" onClick={this.startListening} type="button">
           {this.state.listeningText}
         </button>
-          {this.renderInterimPhrase()}
+        {this.renderInterimPhrase()}
         <h2>Recorded Phrases</h2>
         <div className="phrases-container">
           {this.renderPhrases()}
