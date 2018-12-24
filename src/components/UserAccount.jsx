@@ -66,24 +66,27 @@ export default class UserAccount extends Component {
     if (this.state.uid) {
       return (
         <span className="user-profile-container" onClick={this.toggleMenu}>
-          <img className="user-profile-image" src={this.state.photo} />
+          <img className="user-profile-image" src={this.state.photo} alt="profile_image" />
           <h5>{this.state.name}</h5>
           <div className="dropdown-menu hidden">
             <h5>{this.state.email}</h5>
-            <button className="login-button logout" onClick={this.signout}>
+            <button className="login-button logout" onClick={this.signout} type="button">
               Sign Out
             </button>
           </div>
         </span>
       )
-    } else {
-      return (
-        <span>
-          <button className="login-button" onClick={this.googleAccount}>Sign In</button>
-          <button className="login-button sign-up" onClick={this.googleAccount}>Sign Up</button>
-        </span>
-      )
     }
+    return (
+      <span>
+        <button className="login-button" onClick={this.googleAccount} type="button">
+          Sign In
+        </button>
+        <button className="login-button sign-up" onClick={this.googleAccount} type="button">
+          Sign Up
+        </button>
+      </span>
+    )
   }
 
   render() {

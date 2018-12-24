@@ -1,8 +1,7 @@
-  import React, { Component } from 'react'
-  import './../styles/Suggestion.css';
+import React, { Component } from 'react'
+import '../styles/Suggestion.css';
 
 export default class Accordion extends Component {
-  
   constructor(props) {
     super(props);
 
@@ -12,7 +11,7 @@ export default class Accordion extends Component {
   }
 
   handleTextState = (e) => {
-    let target = e.target;
+    let { target } = e;
     if (e.target.nodeName !== 'DIV') {
       target = e.target.parentNode;
     }
@@ -30,9 +29,8 @@ export default class Accordion extends Component {
   renderText = () => {
     if (this.state.textState) {
       return this.props.igbo;
-    } else {
-      return this.props.english;
     }
+    return this.props.english;
   }
 
   render() {

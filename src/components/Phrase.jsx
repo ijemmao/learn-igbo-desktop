@@ -8,7 +8,6 @@ export default class Phrase extends Component {
       igboWords: this.props.igboWords || [],
       igboSentence: this.props.igboPhrase || '',
       englishWords: this.props.englishPhrase.split(' ') || [],
-      englishSentence: this.props.englishSentence || '',
     }
   }
 
@@ -36,18 +35,19 @@ export default class Phrase extends Component {
             className={`${this.state.igboWords[index]} english-word`}
             onMouseEnter={this.enterHover}
             onMouseLeave={this.leaveHover}
-          > { word } 
-          
-          
+          >
+            { word }
+
+
             <div className="igbo-word invisible">
               <span>{this.state.igboWords[index]}</span>
             </div>
           </span>
         </span>
-      ) 
+      )
     })
   }
-  
+
   renderIgbo = () => {
     return (
       <span>

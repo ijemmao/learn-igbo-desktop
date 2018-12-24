@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import UserAccount from './UserAccount'
-import './../styles/Navbar.css'
+import '../styles/Navbar.css'
 
 export default class Navbar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
   render() {
     return (
       <div className="navbar-container">
@@ -17,7 +22,7 @@ export default class Navbar extends Component {
           <ul className="navbar-options">
             <li>
               <a href="/camera">
-                Camera  
+                Camera
               </a>
             </li>
             <li>
@@ -36,7 +41,14 @@ export default class Navbar extends Component {
               </a>
             </li>
           </ul>
-          <div style={{height: 30, width: 2, backgroundColor: 'white', marginRight: 30, borderRadius: 2 }} />
+          <div style={{
+            height: 30,
+            width: 2,
+            backgroundColor: 'white',
+            marginRight: 30,
+            borderRadius: 2,
+          }}
+          />
           <UserAccount />
         </span>
       </div>
