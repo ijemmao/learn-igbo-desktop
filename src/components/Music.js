@@ -11,6 +11,10 @@ export default class Music extends Component {
   }
 
   togglePlay = () => {
-    !this.play ? this.audio.play() : this.audio.stop()
+    if (!this.play) {
+      this.audio.play()
+    } else {
+      this.audio.stop()
+    }
   }
 }

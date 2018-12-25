@@ -3,24 +3,23 @@ import anime from 'animejs'
 import Anime from 'react-anime'
 import Navbar from '../components/Navbar'
 import ProgressBar from '../components/ProgressBar'
-import Convert from './../components/Convert'
+import Convert from '../components/Convert'
 import Music from '../components/Music'
-import './../styles/Game.css'
-import levelData from './../assets/data/quiz-levels.json'
-import starSound from './../assets/sounds/star.wav'
-import congratsSound from './../assets/sounds/achievement.mp3'
+import '../styles/Game.css'
+import levelData from '../assets/data/quiz-levels.json'
+import starSound from '../assets/sounds/star.wav'
+import congratsSound from '../assets/sounds/achievement.mp3'
 
 let scrollTop = 0;
-window.addEventListener('scroll', (e) => {
+window.addEventListener('scroll', () => {
   scrollTop = window.pageYOffset
 })
 
-const star = new Music({ uri: starSound })
+const starChime = new Music({ uri: starSound })
 const congrats = new Music({ uri: congratsSound })
 
 
 export default class Game extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -45,23 +44,29 @@ export default class Game extends Component {
       starElement.classList.add(star[2])
       starElement.innerText = '🌟'
       starElement.style.left = `${star[0] - 30}px`
-      starElement.style.top = `${star[1] + scrollTop }px`
+      starElement.style.top = `${star[1] + scrollTop}px`
       document.body.appendChild(starElement)
     })
 
     starInformation.forEach((star) => {
+      const starCallback = (callbackStar) => {
+        const element = document.querySelector(`.${callbackStar[2]}`)
+        if (element) {
+          document.querySelector(`.${callbackStar[2]}`).remove()
+        }
+      }
+
       anime({
         targets: `.${star[2]}`,
         translateX: star[3],
         translateY: star[4],
-        opacity: [1, .4, 0],
+        opacity: [1, 0.4, 0],
         duration: 800,
         direction: 'normal',
         easing: 'easeOutQuad',
-        complete: () => document.querySelector(`.${star[2]}`) ? document.querySelector(`.${star[2]}`).remove() : console.log('no star')
-      });
+        complete: () => starCallback(star),
+      })
     })
-    
   }
 
   nextQuestion = () => {
@@ -71,23 +76,29 @@ export default class Game extends Component {
   }
 
   getEnglishCorresponding = (answer, childTarget) => {
-    return this.state.englishWords.indexOf(answer) === this.state.igboOptions.indexOf(childTarget.innerText)
+    const englishIndex = this.state.englishWords.indexOf(answer)
+    const igboIndex = this.state.igboOptions.indexOf(childTarget.innerText)
+    return englishIndex === igboIndex
   }
 
   checkAnswer = (e, answer) => {
-    let target = e.target;
-    let childTarget;
+    let { target } = e;
     if (e.target.nodeName !== 'DIV') {
       target = e.target.parentNode
     }
-    childTarget = target.childNodes[0]
+    const [childTarget] = target.childNodes
 
 
     if (this.getEnglishCorresponding(answer, childTarget)) {
       // correct answer
-      const { x, y, height, width } = childTarget.getBoundingClientRect()
+      const {
+        x,
+        y,
+        height,
+        width,
+      } = childTarget.getBoundingClientRect()
       this.throwStars([[x, y, 'first', '-10rem', '6rem'], [x, y - height, 'second', '-10rem', '-6rem'], [x + width, y - height, 'third', '10rem', '-6rem'], [x + width, y, 'fourth', '10rem', '6rem']])
-      star.togglePlay();
+      starChime.togglePlay();
 
       setTimeout(() => {
         this.nextQuestion()
@@ -103,11 +114,10 @@ export default class Game extends Component {
           direction: 'alternate',
           loop: 3,
           easing: 'easeOutBack',
-          complete: () => setTimeout(() => { target.classList.remove('shaking') }, 100)
+          complete: () => setTimeout(() => { target.classList.remove('shaking') }, 100),
         });
       }
     }
-
   }
 
   random = () => {
@@ -115,11 +125,12 @@ export default class Game extends Component {
   }
 
   shuffle = (array) => {
-    let currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
 
     // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-
+    while (currentIndex !== 0) {
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
@@ -141,7 +152,7 @@ export default class Game extends Component {
     const correctAnswer = this.state.question;
     const options = new Set([correctAnswer]);
     while (options.size < 4) {
-      let randomNumber = this.random();
+      const randomNumber = this.random();
       if (randomNumber !== correctAnswer && !options.has(randomNumber)) {
         options.add(randomNumber);
       }
@@ -149,7 +160,7 @@ export default class Game extends Component {
 
     return this.shuffle(Array.from(options)).map((option) => {
       return (
-        <div className="igbo-option" onClick={(e) => this.checkAnswer(e, this.state.englishWords[this.state.question])}>
+        <div className="igbo-option" onClick={(e) => { this.checkAnswer(e, this.state.englishWords[this.state.question]) }}>
           <h2>{this.state.igboOptions[option]}</h2>
         </div>
       )
@@ -158,11 +169,13 @@ export default class Game extends Component {
 
   renderCongrats = () => {
     return (
-      <Anime easing="easeOutElastic"
+      <Anime
+        easing="easeOutElastic"
         duration={1700}
         delay={(el, index) => index * 240}
-        translateY='-30vh'>
-        <h1 className="congratulations-icons">✨🏆✨</h1>
+        translateY="-30vh"
+      >
+        <h1 className="congratulations-icons"><span role="img" aria-label="trophy">✨🏆✨</span></h1>
         <h2 className="post-game-text">You successfully completed this level</h2>
       </Anime>
     )
@@ -170,11 +183,13 @@ export default class Game extends Component {
 
   renderNextGameOptions = (optionText, delay, callback) => {
     return (
-      <Anime easing="easeOutElastic"
+      <Anime
+        easing="easeOutElastic"
         duration={2000}
-        delay={(el, index) => delay}
-        translateY='-30vh'
-        opacity='1'>
+        delay={() => delay}
+        translateY="-30vh"
+        opacity="1"
+      >
         <div className="next-game-option-container" onClick={callback}>
           <h3>
             {optionText}
@@ -196,31 +211,31 @@ export default class Game extends Component {
           </div>
         </span>
       )
-    } else {
-      congrats.togglePlay()
-      return (
-        <span className="congratulations-container">
-          <h1>Congratulations!</h1>
-          {this.renderCongrats()}
-          <div className="next-game-options-container">
-            {this.renderNextGameOptions('Play again', 1000, this.resetGame)}
-            {this.renderNextGameOptions('Choose a game', 1100, this.backToGames)}
-          </div>
-        </span>
-      )
     }
+
+    congrats.togglePlay()
+    return (
+      <span className="congratulations-container">
+        <h1>Congratulations!</h1>
+        {this.renderCongrats()}
+        <div className="next-game-options-container">
+          {this.renderNextGameOptions('Play again', 1000, this.resetGame)}
+          {this.renderNextGameOptions('Choose a game', 1100, this.backToGames)}
+        </div>
+      </span>
+    )
   }
 
   renderGameType = () => {
     if (this.props.match.params.level === 'convert') {
       return <Convert />
-    } else {
-      return (
-        <span>
-          {this.renderState()}
-        </span>
-      )
     }
+
+    return (
+      <span>
+        {this.renderState()}
+      </span>
+    )
   }
 
   render() {

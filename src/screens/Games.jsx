@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import Navbar from './../components/Navbar'
-import levelsData from './../assets/data/quiz-levels'
-import './../styles/Games.css'
+import Navbar from '../components/Navbar'
+import levelsData from '../assets/data/quiz-levels'
+import '../styles/Games.css'
 
 export default class Games extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      levels: levelsData.levels
+      levels: levelsData.levels,
     }
   }
 
@@ -25,6 +25,7 @@ export default class Games extends Component {
       )
     })
   }
+
   render() {
     return (
       <div className="games-container">

@@ -1,0 +1,31 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  "rules": {
+    "semi": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "guard-for-in": "off",
+    "react/no-unused-state": "warn",
+    "react/destructuring-assignment": "off",
+    "react/no-access-state-in-setstate": "off",
+    "no-restricted-syntax": "off",
+    "no-lonely-if": "off",
+    "react/no-unescaped-entities": "off",
+    "react/prop-types": "off",
+    "react/no-array-index-key": "off",
+    "arrow-body-style": "off",
+    "one-var": "off",
+    "no-param-reassign": "off"
+  }
+}

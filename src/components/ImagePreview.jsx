@@ -1,20 +1,21 @@
 import React, { Component } from 'react'
 import ReactLoading from 'react-loading'
 import Clarifai from 'clarifai'
-import Suggestion from './../components/Suggestion'
-import translate from './../actions/translate'
-import photo from './../actions/photo'
-import './../styles/ImagePreview.css'
+import Suggestion from './Suggestion'
+import translate from '../actions/translate'
+import photo from '../actions/photo'
+import env from '../env.json'
+import '../styles/ImagePreview.css'
 
-import env from './../env.json'
+const app = new Clarifai.App({
+  apiKey: env.CLARIFAI,
+});
 
 export default class ImagePreview extends Component {
-  
   constructor(props) {
     super(props)
 
     this.state = {
-      uid: this.props.uid || null,
       analyzingPhoto: false,
       imgBase64: this.props.image || null,
       english: this.props.english || [],
@@ -35,15 +36,20 @@ export default class ImagePreview extends Component {
     if (this.state.analyzingPhoto) {
       return (
         <span className="react-loading-container">
-          <ReactLoading className="loading" type={'spin'} color={'#ccc'} height={'10vh'} width={'10vh'} />
+          <ReactLoading className="loading" type="spin" color="#ccc" height="10vh" width="10vh" />
           <h3>Detecting Terms from photo</h3>
         </span>
       )
-    } else if (!this.state.analyzingPhoto && this.state.english.length > 0 && this.state.igbo.length > 0) {
+    }
+
+    if (!this.state.analyzingPhoto && this.state.english.length > 0 && this.state.igbo.length > 0) {
       return this.state.english.map((word, index) => {
-        return <Suggestion key={`${word}${index}`} english={word} igbo={this.state.igbo[index]} />
+        const suggestionElement = <Suggestion key={`${word}${index}`} english={word} igbo={this.state.igbo[index]} />
+        return suggestionElement
       })
-    } else if (!this.state.analyzingPhoto &&  this.state.english.length === 0) {
+    }
+
+    if (!this.state.analyzingPhoto && this.state.english.length === 0) {
       return (
         <span className="no-suggestions-headers-container">
           <h3>There are currently no terms!</h3>
@@ -51,20 +57,22 @@ export default class ImagePreview extends Component {
         </span>
       )
     }
+
+    return null
   }
-    
+
   renderImage = (e) => {
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
       e.target.nextSibling.classList.add('hidden')
       document.querySelector('.image-preview').classList.remove('hidden')
 
-      reader.onload = (e) => {
+      reader.onload = (element) => {
         const imagePreview = document.querySelector('.image-preview img')
-        imagePreview.setAttribute('src', e.target.result)
-        console.log(e.target.result.split(',')[0])
-        this.setState({ imgBase64: e.target.result.split(',')[1] })
-        this.sendImage(e.target.result.split(',')[1])
+        imagePreview.setAttribute('src', element.target.result)
+        console.log(element.target.result.split(',')[0])
+        this.setState({ imgBase64: element.target.result.split(',')[1] })
+        this.sendImage(element.target.result.split(',')[1])
       }
 
       reader.readAsDataURL(e.target.files[0])
@@ -74,16 +82,26 @@ export default class ImagePreview extends Component {
   sendImage = (image) => {
     this.setState({ analyzingPhoto: true })
     app.models.initModel({ id: Clarifai.GENERAL_MODEL, version: 'aa7f35c01e0642fda5cf400f543e7c40' })
-      .then(generalModel => {
+      .then((generalModel) => {
         return generalModel.predict(image)
       })
       .then((res) => {
-        const concepts = res.outputs[0].data.concepts;
+        const { concepts } = res.outputs[0].data;
         const suggestions = Array.from(new Set(concepts.map(concept => concept.name)))
         this.setState({ english: suggestions })
         translate.translateEnglish(suggestions).then((results) => {
           this.setState({ analyzingPhoto: false, igbo: results.words })
-          this.props.uid ? photo.postPhotoResult(this.props.uid, { image, english: suggestions, igbo: results.words }) : console.log('did not push: user not logged in')
+
+          if (this.props.uid) {
+            photo.postPhotoResult(this.props.uid,
+              {
+                image,
+                english: suggestions,
+                igbo: results.words,
+              })
+          } else {
+            console.log('did not push: user not logged in')
+          }
         })
       })
       .catch((error) => {
@@ -101,10 +119,10 @@ export default class ImagePreview extends Component {
       <span>
         <span className="choose-image-button">
           <input className="image-input" type="file" accept="image/png, image/jpeg" onChange={this.renderImage} />
-          <button className="choose-image" onClick={this.clickInput}>Upload Photo</button>
+          <button className="choose-image" onClick={this.clickInput} type="button">Upload Photo</button>
         </span>
         <div className="image-preview hidden">
-          <img src="/" />
+          <img src="/" alt="render_button" />
         </div>
       </span>
     )
@@ -131,7 +149,3 @@ export default class ImagePreview extends Component {
     )
   }
 }
-
-const app = new Clarifai.App({
-  apiKey: env.CLARIFAI
-});

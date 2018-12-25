@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import ReactLoading from 'react-loading'
-import translate from './../actions/translate'
-import './../styles/Phrase.css'
+import '../styles/Phrase.css'
 
 export default class Phrase extends Component {
   constructor(props) {
@@ -10,21 +8,21 @@ export default class Phrase extends Component {
       igboWords: this.props.igboWords || [],
       igboSentence: this.props.igboPhrase || '',
       englishWords: this.props.englishPhrase.split(' ') || [],
-      englishSentence: this.props.englishSentence || '',
-      expanded: false,
     }
+
+    console.log(this.props.igboWords)
   }
 
   enterHover = (e) => {
-    const prevNode = e.target.childNodes[2]
+    const prevNode = e.target.childNodes[1]
     prevNode.classList.remove('invisible')
     const prevWidth = prevNode.getBoundingClientRect().width
-    const { x, y, width } = e.target.getBoundingClientRect()
-    prevNode.style.left = `${x + (width  - prevWidth) / 2}px`
+    const { x, width } = e.target.getBoundingClientRect()
+    prevNode.style.left = `${x + (width - prevWidth) / 2}px`
   }
 
   leaveHover = (e) => {
-    let prevNode = e.target.childNodes[2];
+    let prevNode = e.target.childNodes[1];
     if (e.target.childNodes.length === 1) {
       prevNode = e.target;
     }
@@ -39,18 +37,17 @@ export default class Phrase extends Component {
             className={`${this.state.igboWords[index]} english-word`}
             onMouseEnter={this.enterHover}
             onMouseLeave={this.leaveHover}
-          > { word } 
-          
-          
+          >
+            {`${word} `}
             <div className="igbo-word invisible">
               <span>{this.state.igboWords[index]}</span>
             </div>
           </span>
         </span>
-      ) 
+      )
     })
   }
-  
+
   renderIgbo = () => {
     return (
       <span>

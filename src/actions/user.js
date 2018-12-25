@@ -1,26 +1,26 @@
 import firebase from 'firebase'
+
 const provider = new firebase.auth.GoogleAuthProvider()
 
 const createGoogleUser = () => {
-  return new Promise((resolve, reject) => {
+  const createGoogleUserPromise = new Promise((resolve, reject) => {
     firebase.auth().signInWithPopup(provider).then((result) => {
-      let token = result.credential.accessToken;
-      let user = result.user;
+      const { user } = result;
       resolve(user)
-    }).catch(function (error) {
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      let email = error.email;
-      let credential = error.credential;
-  
-      reject('User:', email, 'was unable to sign up. Error Code:', errorCode, '. Error Message:', errorMessage)
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const { email } = error;
+      console.log('User:', email, 'was unable to sign up. Error Code:', errorCode, '. Error Message:', errorMessage)
+      reject(error)
     });
   })
+  return createGoogleUserPromise
 }
 
 const getGoogleUser = () => {
-  return new Promise((resolve, reject) => {
-    firebase.auth().onAuthStateChanged(function (user) {
+  const getGoggleUserPromise = new Promise((resolve) => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         resolve(user)
       } else {
@@ -28,18 +28,20 @@ const getGoogleUser = () => {
       }
     });
   })
+  return getGoggleUserPromise
 }
 
 const signOutGoogleUser = () => {
-  return new Promise((resolve, reject) => {
-    firebase.auth().signOut().then(function () {
+  const signOutGoogleUserPromise = new Promise((resolve, reject) => {
+    firebase.auth().signOut().then(() => {
       // Sign-out successful.
       resolve(null)
-    }).catch(function (error) {
+    }).catch((error) => {
       // An error happened.
       reject(error)
     });
   })
+  return signOutGoogleUserPromise
 }
 
 export default { createGoogleUser, getGoogleUser, signOutGoogleUser }

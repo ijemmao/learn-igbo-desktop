@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import anime from 'animejs'
-import Music from '../components/Music'
-import convertNumber from './../actions/convert-number'
-import starSound from './../assets/sounds/star.wav'
-import './../styles/Convert.css'
+import Music from './Music'
+import convertNumber from '../actions/convert-number'
+import starSound from '../assets/sounds/star.wav'
+import '../styles/Convert.css'
 
 let scrollTop = 0;
-window.addEventListener('scroll', (e) => {
+window.addEventListener('scroll', () => {
   scrollTop = window.pageYOffset
 })
 
@@ -16,14 +16,14 @@ window.addEventListener('keydown', (e) => {
   }
 })
 
-const star = new Music({ uri: starSound })
+const starChime = new Music({ uri: starSound })
 
 export default class Convert extends Component {
   constructor(props) {
     super(props)
     this.state = {
       currentNumber: 0,
-      currentNumberIgbo: convertNumber(0)
+      currentNumberIgbo: convertNumber(0),
     }
   }
 
@@ -34,7 +34,7 @@ export default class Convert extends Component {
   }
 
   random = () => {
-    return  Math.floor(Math.random() * Math.floor(10))
+    return Math.floor(Math.random() * Math.floor(10))
   }
 
   throwStars = (starInformation) => {
@@ -49,18 +49,24 @@ export default class Convert extends Component {
     })
 
     starInformation.forEach((star) => {
+      const starCallback = (callbackStar) => {
+        const element = document.querySelector(`.${callbackStar[2]}`)
+        if (element) {
+          document.querySelector(`.${callbackStar[2]}`).remove()
+        }
+      }
+
       anime({
         targets: `.${star[2]}`,
         translateX: star[3],
         translateY: star[4],
-        opacity: [1, .4, 0],
+        opacity: [1, 0.4, 0],
         duration: 800,
         direction: 'normal',
         easing: 'easeOutQuad',
-        complete: () => document.querySelector(`.${star[2]}`) ? document.querySelector(`.${star[2]}`).remove() : console.log('no star')
+        complete: () => starCallback(star),
       });
     })
-
   }
 
   handleAnswer = (e) => {
@@ -73,16 +79,21 @@ export default class Convert extends Component {
     if (this.state.currentNumber.toString() === inputText) {
       const newNumber = this.random()
       console.log(newNumber)
-      let inputTarget = e.target.previousSibling
+      inputTarget = e.target.previousSibling
       if (e.target.nodeName !== 'BUTTON') {
         inputTarget = e.target.parentNode.previousSibling
       }
       inputTarget.value = ''
       this.setState({ currentNumber: newNumber, currentNumberIgbo: convertNumber(newNumber) })
 
-      const { x, y, height, width } = inputTarget.getBoundingClientRect()
+      const {
+        x,
+        y,
+        height,
+        width,
+      } = inputTarget.getBoundingClientRect()
       this.throwStars([[x, y, 'first', '-10rem', '6rem'], [x, y - height, 'second', '-10rem', '-6rem'], [x + width, y - height, 'third', '10rem', '-6rem'], [x + width, y, 'fourth', '10rem', '6rem']])
-      star.togglePlay();
+      starChime.togglePlay();
 
       console.log('correct!!')
     } else {
@@ -97,7 +108,7 @@ export default class Convert extends Component {
           direction: 'alternate',
           loop: 3,
           easing: 'easeOutBack',
-          complete: () => setTimeout(() => { inputTarget.classList.remove('shaking') }, 100)
+          complete: () => setTimeout(() => { inputTarget.classList.remove('shaking') }, 100),
         });
       }
     }
@@ -110,7 +121,7 @@ export default class Convert extends Component {
         <h2 className="convert-header">{this.state.currentNumberIgbo}</h2>
         <div className="convert-input-container">
           <input type="text" />
-          <button onClick={this.handleAnswer}>
+          <button onClick={this.handleAnswer} type="button">
             <h2>enter</h2>
           </button>
         </div>
