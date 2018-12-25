@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Anime from 'react-anime'
+import { NavLink } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import '../styles/Home.css'
 
@@ -23,14 +24,16 @@ export default class Home extends Component {
         delay={() => index * 240}
         translateY={['100vh', '4vh']}
       >
-        <a href={`/${title.toLowerCase()}`}>
-          <div id={title.toLowerCase()} className="major-option-container">
-            <div>
-              <h2>{title}</h2>
-              <h5>{description}</h5>
+        <span>
+          <NavLink to={`/${title.toLowerCase()}`}>
+            <div id={title.toLowerCase()} className="major-option-container">
+              <div>
+                <h2>{title}</h2>
+                <h5>{description}</h5>
+              </div>
             </div>
-          </div>
-        </a>
+          </NavLink>
+        </span>
       </Anime>
     )
   }
@@ -40,13 +43,13 @@ export default class Home extends Component {
       return (
         <div className="home-container">
           <Navbar />
-          <a href="/">
+          <NavLink to="/">
             <h1 id="logo">
               <span role="img" aria-label="emoji">🌟</span>
               Learn Igbo
               <span role="img" aria-label="emoji">🇳🇬</span>
             </h1>
-          </a>
+          </NavLink>
           <h5>An interactive web app to teach the Naija language</h5>
           <div className="major-options-container">
             {this.majorOption('Camera', 'Interact with your camera and photos!', 0)}

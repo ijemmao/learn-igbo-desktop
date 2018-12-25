@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import UserAccount from './UserAccount'
 import '../styles/Navbar.css'
 
@@ -13,32 +14,27 @@ export default class Navbar extends Component {
       <div className="navbar-container">
         <span className="navbar-left-section">
           <h3 id="logo">
-            <a href="/">
+            <NavLink to="/">
               Learn Igbo
-            </a>
+            </NavLink>
           </h3>
         </span>
         <span className="navbar-right-section">
           <ul className="navbar-options">
             <li>
-              <a href="/camera">
+              <NavLink to="/camera">
                 Camera
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/speech">
+              <NavLink to="/speech">
                 Speech
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/games">
+              <NavLink to="/games">
                 Games
-              </a>
-            </li>
-            <li>
-              <a href="/about">
-                About
-              </a>
+              </NavLink>
             </li>
           </ul>
           <div style={{

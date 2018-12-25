@@ -6,7 +6,7 @@ const url = 'https://learn-igbo.herokuapp.com'
 const translateEnglish = (data) => {
   const promise = new Promise((resolve, reject) => {
     axios.get(`${url}/translate`, {
-      params: { words: data }
+      params: { words: data },
     }).then((res) => {
       resolve(res.data)
     })

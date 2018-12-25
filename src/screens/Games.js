@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import levelsData from '../assets/data/quiz-levels'
 import '../styles/Games.css'
@@ -15,13 +16,13 @@ export default class Games extends Component {
   renderLevelOptions = () => {
     return this.state.levels.map((level) => {
       return (
-        <a href={`/game/${level}`}>
+        <NavLink to={`/game/${level}`}>
           <div className="game-level-option-container">
             <h3 classNam="game-level-option-header">
               {level}
             </h3>
           </div>
-        </a>
+        </NavLink>
       )
     })
   }

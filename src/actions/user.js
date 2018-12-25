@@ -8,10 +8,6 @@ const createGoogleUser = () => {
       const { user } = result;
       resolve(user)
     }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const { email } = error;
-      console.log('User:', email, 'was unable to sign up. Error Code:', errorCode, '. Error Message:', errorMessage)
       reject(error)
     });
   })

@@ -27,6 +27,7 @@
     "arrow-body-style": "off",
     "one-var": "off",
     "no-param-reassign": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "no-unused-vars": "warn"
   }
 }

@@ -9,8 +9,6 @@ export default class Phrase extends Component {
       igboSentence: this.props.igboPhrase || '',
       englishWords: this.props.englishPhrase.split(' ') || [],
     }
-
-    console.log(this.props.igboWords)
   }
 
   enterHover = (e) => {

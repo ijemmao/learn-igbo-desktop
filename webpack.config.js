@@ -11,7 +11,7 @@ const finalCSSLoader = (env === 'production') ? MiniCssExtractPlugin.loader : { 
 module.exports = {
   mode: env,
   output: { publicPath: '/' },
-  entry: ['babel-polyfill', './src'],
+  entry: ['babel-polyfill', './src/index.js'],
   devtool: 'source-map',
   module: {
     rules: [
@@ -49,13 +49,13 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/,
+        test: /\.(jpe?g|png|gif|svg|mp3|wav)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
-              useRelativePath: true,
-              name: '[name].[ext]',
+              useRelativePath: false,
+              name: 'Users/IjemmaOnwuzulike%201/Documents/learn-igbo-desktop/dist/[name].[ext]',
             },
           },
         ],

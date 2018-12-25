@@ -29,7 +29,6 @@ export default class Convert extends Component {
 
   componentWillMount = () => {
     const newNumber = this.random()
-    console.log(newNumber)
     this.setState({ currentNumber: newNumber, currentNumberIgbo: convertNumber(newNumber) })
   }
 
@@ -78,7 +77,6 @@ export default class Convert extends Component {
 
     if (this.state.currentNumber.toString() === inputText) {
       const newNumber = this.random()
-      console.log(newNumber)
       inputTarget = e.target.previousSibling
       if (e.target.nodeName !== 'BUTTON') {
         inputTarget = e.target.parentNode.previousSibling
@@ -94,10 +92,7 @@ export default class Convert extends Component {
       } = inputTarget.getBoundingClientRect()
       this.throwStars([[x, y, 'first', '-10rem', '6rem'], [x, y - height, 'second', '-10rem', '-6rem'], [x + width, y - height, 'third', '10rem', '-6rem'], [x + width, y, 'fourth', '10rem', '6rem']])
       starChime.togglePlay();
-
-      console.log('correct!!')
     } else {
-      console.log('incorrect')
       inputTarget.value = ''
       if (!inputTarget.classList.contains('shaking')) {
         inputTarget.classList.add('shaking')

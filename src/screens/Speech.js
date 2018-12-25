@@ -91,7 +91,7 @@ export default class Speech extends Component {
         this.listener.startListening()
         this.setState({ listening: true, listeningText: 'Stop Listening' })
       } catch (err) {
-        console.log('Start listening: ', err)
+        console.error(err)
       }
     } else {
       this.listener.stopListening()

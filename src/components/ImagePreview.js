@@ -70,7 +70,6 @@ export default class ImagePreview extends Component {
       reader.onload = (element) => {
         const imagePreview = document.querySelector('.image-preview img')
         imagePreview.setAttribute('src', element.target.result)
-        console.log(element.target.result.split(',')[0])
         this.setState({ imgBase64: element.target.result.split(',')[1] })
         this.sendImage(element.target.result.split(',')[1])
       }
@@ -99,13 +98,8 @@ export default class ImagePreview extends Component {
                 english: suggestions,
                 igbo: results.words,
               })
-          } else {
-            console.log('did not push: user not logged in')
           }
         })
-      })
-      .catch((error) => {
-        console.log(error)
       })
   }
 

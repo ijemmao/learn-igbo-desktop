@@ -13,7 +13,8 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "react-scripts": "2.1.1",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.1",
+    "webpack-serve": "^0.3.1"
   },
   "dependencies": {
     "animejs": "^2.2.0",
@@ -25,6 +26,7 @@
     "firebase-admin": "^6.4.0",
     "html-webpack-plugin": "^3.2.0",
     "koa-connect": "^2.0.1",
+    "lodash": "^4.17.11",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
     "react": "^16.6.3",
@@ -35,12 +37,10 @@
     "speech-to-text": "^2.9.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "NODE_ENV=production webpack --colors",
-    "clean": "rimraf dist",
-    "deploy": "npm run build; surge -p dist -d learn-igbo.surge.sh; yarn run clean",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "NODE_ENV=development webpack-serve ./webpack.config.js",
+    "build": "react-scripts build",
+    "clean": "rimraf build",
+    "deploy": "npm run build; surge -p build -d learn-igbo.surge.sh; npm run clean"
   },
   "eslintConfig": {
     "extends": "react-app"
