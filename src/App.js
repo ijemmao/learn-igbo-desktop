@@ -5,6 +5,7 @@ import Camera from './screens/Camera'
 import Speech from './screens/Speech'
 import Games from './screens/Games'
 import Game from './screens/Game'
+import NoMatch from './screens/NoMatch'
 import './styles/App.css'
 
 const App = () => (
@@ -15,6 +16,7 @@ const App = () => (
       <Route exact path="/speech" component={Speech} />
       <Route exact path="/games" component={Games} />
       <Route exact path="/game/:level" component={Game} />
+      <Route component={NoMatch} />
     </Switch>
   </Router>
 )
