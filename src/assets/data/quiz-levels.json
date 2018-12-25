@@ -6,7 +6,7 @@
   },
   "body parts": {
     "english": ["head", "foot", "arm", "knee", "waist", "hand", "neck", "nose", "ear", "hair", "shoulder", "finger"],
-    "igbo": ["isi", "ụkwụ", "ogwe aka", "ikpere", "n'úkwù", "aka", "n'olu", "imi", "ntị", "ntutu", "ubu", "mkpịsị aka"]
+    "igbo": ["isi", "ụkwụ", "ogwe aka", "ikpere", "úkwù", "aka", "olu", "imi", "ntị", "ntutu", "ubu", "mkpịsị aka"]
   },
   "clothes": {
     "english": ["shirt", "sweater", "jacket", "coat", "socks", "shoes", "trousers", "pajamas", "underwear", "hat", "skirt"],
@@ -18,7 +18,7 @@
   },
   "directions": {
     "english": ["can i help you?", "can you help me?", "where is the airport?", "go straight", "then", "turn left", "turn right"],
-    "igbo": ["m ga enyere gị aka", "ị ga enyere m aka", "kedụ, ebe ọdụ ụgbọelu nọ", "gaba n'iru", "emesie", "ba na aka-nri", "ba na aka-ekpe"]
+    "igbo": ["m ga enyere gị aka", "ị ga enyere m aka", "kedụ, ebe ọdụ ụgbọelu nọ", "gaba n'iru", "emesie", "ba na aka-ekpe", "ba na aka-nri"]
   },
   "family": {
     "english": ["mother", "sister", "grandfather", "brother", "father", "friend", "cousin", "grandmother", "uncle", "aunt"],
