@@ -70,7 +70,7 @@ export default class ImagePreview extends Component {
       reader.onload = (element) => {
         const imagePreview = document.querySelector('.image-preview img')
         imagePreview.setAttribute('src', element.target.result)
-        console.log(e.target.result.split(',')[0])
+        console.log(element.target.result.split(',')[0])
         this.setState({ imgBase64: element.target.result.split(',')[1] })
         this.sendImage(element.target.result.split(',')[1])
       }
