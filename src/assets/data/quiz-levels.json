@@ -21,8 +21,8 @@
     "igbo": ["m ga enyere gị aka", "ị ga enyere m aka", "kedụ, ebe ọdụ ụgbọelu nọ", "gaba n'iru", "emesie", "ba na aka-ekpe", "ba na aka-nri"]
   },
   "family": {
-    "english": ["mother", "sister", "grandfather", "brother", "father", "friend", "cousin", "grandmother", "uncle", "aunt"],
-    "igbo": ["nne", "nwanne", "nna nna", "nwanne", "nna", "enyi", "nwa nwanne", "nne nne", "nwanne mama", "nwanne mama m"]
+    "english": ["mother", "siblings", "sister", "grandfather", "brother", "father", "friend", "cousin", "grandmother", "uncle", "aunt"],
+    "igbo": ["nne", "nwanne", "nwannenwaanyi", "nna nna", "nwanne nwoke", "nna", "enyi", "nwa nwanne", "nne nne", "nwanne mama", "nwanne mama m"]
   },
   "greetings": {
     "english": ["how are you?", "welcome", "hello", "long time no see", "what is your name?", "where are you from", "nice to meet you", "my name is", "pleased to meet you", "goodbye"],
