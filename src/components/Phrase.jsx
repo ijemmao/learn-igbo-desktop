@@ -9,10 +9,12 @@ export default class Phrase extends Component {
       igboSentence: this.props.igboPhrase || '',
       englishWords: this.props.englishPhrase.split(' ') || [],
     }
+
+    console.log(this.props.igboWords)
   }
 
   enterHover = (e) => {
-    const prevNode = e.target.childNodes[2]
+    const prevNode = e.target.childNodes[1]
     prevNode.classList.remove('invisible')
     const prevWidth = prevNode.getBoundingClientRect().width
     const { x, width } = e.target.getBoundingClientRect()
@@ -20,7 +22,7 @@ export default class Phrase extends Component {
   }
 
   leaveHover = (e) => {
-    let prevNode = e.target.childNodes[2];
+    let prevNode = e.target.childNodes[1];
     if (e.target.childNodes.length === 1) {
       prevNode = e.target;
     }
@@ -36,9 +38,7 @@ export default class Phrase extends Component {
             onMouseEnter={this.enterHover}
             onMouseLeave={this.leaveHover}
           >
-            { word }
-
-
+            {`${word} `}
             <div className="igbo-word invisible">
               <span>{this.state.igboWords[index]}</span>
             </div>
