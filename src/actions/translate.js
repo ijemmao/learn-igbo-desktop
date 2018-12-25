@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const url = 'https://learn-igbo.herokuapp.com'
-const url = 'http://localhost:8080'
+const url = 'https://learn-igbo.herokuapp.com'
+// const url = 'http://localhost:8080'
 
 const translateEnglish = (data) => {
   const promise = new Promise((resolve, reject) => {
