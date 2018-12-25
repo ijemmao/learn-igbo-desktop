@@ -12,14 +12,21 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "webpack-cli": "^3.1.2"
   },
   "dependencies": {
     "animejs": "^2.2.0",
+    "autoprefixer": "^9.4.3",
     "axios": "^0.18.0",
     "clarifai": "^2.9.0",
+    "connect-history-api-fallback": "^1.5.0",
     "firebase": "^5.7.0",
     "firebase-admin": "^6.4.0",
+    "html-webpack-plugin": "^3.2.0",
+    "koa-connect": "^2.0.1",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
     "react": "^16.6.3",
     "react-anime": "^2.2.0",
     "react-dom": "^16.6.3",
@@ -29,8 +36,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "deploy": "npm run build && surge -p ./build -d learn-igbo.surge.sh",
+    "build": "NODE_ENV=production webpack --colors",
+    "clean": "rimraf dist",
+    "deploy": "npm run build; surge -p dist -d learn-igbo.surge.sh; yarn run clean",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

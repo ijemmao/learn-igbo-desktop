@@ -26,6 +26,7 @@
     "react/no-array-index-key": "off",
     "arrow-body-style": "off",
     "one-var": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "react/jsx-filename-extension": "off"
   }
 }
